@@ -1,0 +1,39 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/rem';
+
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: rem(47px);
+  background-color: #fff;
+
+}
+
+
+
+.link-login {
+  background-color: $primary;
+  color: $secondary;
+  padding: rem(16px) rem(20px);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+
+
+
+}
+
+.link-login:hover {
+  background-color: $secondary;
+  color: $grey-medium;
+
+}
+
+/*
+.btnsvg--home{
+
+}
+*/

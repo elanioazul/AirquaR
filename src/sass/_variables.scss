@@ -1,0 +1,43 @@
+//-------------
+//VARIABLES
+//--------------
+
+//colors palette-------------------------------------------------------------
+$primary: #78909C;
+$primary-sft: #8a9ea8;
+$primary-sft2: #95a8b1;
+$secondary: #fff;
+$lime: #cede01;
+$alternative: #323d48;
+
+
+//color buttons-------------------------------------------------------------
+$cancel: #DB545D;
+$edit: #8dc4b4;
+$login: #48a1f4;
+$signup: #dd8731;
+//grey scale------------------------------------------------------------------
+$grey-dark: #7d7d7d;
+$grey-medium: #999999;
+$grey2-light: #BBBBBB;
+//Scaffolding------------------------------------------------------------------
+//primer pklano de todos los textos
+//color de enlaces y estilo
+//fondo de todas las pantallas por si no se cargan
+$link-decoration: underline;
+$link-hover: none;
+
+//Fonts------------------------------------------------------------------------
+$font-size: 14;
+
+$font-primary: "Arial";
+$font-secondary: "Menlo-Regular", monospace;
+
+$font-family-primary: $font-primary, sans-serif;
+$font-family-seconday: $font-secondary, Arial, sans-serif;
+
+
+//devide width breakpoints
+$tablet-breakpoint: 767;
+$desktop-breakpoint: 1022;
+

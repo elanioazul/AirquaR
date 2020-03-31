@@ -1,0 +1,90 @@
+body {
+    color: $grey-dark;
+    background-color: $secondary;
+    font-family: $font-family-primary;
+    font-size: $font-size;
+
+}
+
+.input-btn {
+    font-family: $font-primary, sans-serif;
+    font-weight: bold;
+}
+.btn {
+    background: none;
+    border: 2px solid $primary;
+    color: $primary;
+    padding: 3px 9px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+    display: inline-block;
+    
+    
+}
+.btn:hover {
+    color: $secondary;
+    background-color: $primary-sft2;
+}
+
+
+.btn--close {
+    position: absolute;
+    z-index: 100;
+    right: 30px;
+    top: 2px;
+    border: none;
+    box-shadow: none;
+    color: $secondary;
+    transition: color 0.25;
+    font-size: 2.2rem;
+
+}
+
+.btn--close:hover {
+    background-color: $secondary;
+    color: #000;
+    
+}
+
+
+.btnsvg {
+    background: none;
+    border: none;
+}
+.btnsvg:hover {
+    cursor: pointer;
+
+}
+
+
+a {
+    text-decoration: $link-decoration;
+    &:hover {
+        text-decoration: $link-hover;
+    }
+}
+
+.form-group--control {
+    font-family: $font-primary;
+    border-radius: 4px;
+    option {
+        color: #000;
+    }
+    height: rem(30px);
+
+}
+.form-group--control:hover {
+    border-color: blue;
+}
+.form-group--control:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 2px 2px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+}
+
+.form-group--btn {
+    height: rem(30px);
+}

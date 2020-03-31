@@ -1,0 +1,22 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/rem';
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //margin-top: rem(5px);
+  height: rem(50px);
+  align-items: center;
+  position: relative;
+
+}
+.btnsvg-filters {
+  margin-left: 2rem;
+
+
+}
+
+.btnsvg-geocoding {
+  margin-right: 2rem;
+}

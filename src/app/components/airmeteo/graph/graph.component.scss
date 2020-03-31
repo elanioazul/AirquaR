@@ -1,0 +1,11 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/rem';
+
+.graph {
+  margin: rem(10px 10px);
+  width: calc(100vw -10px);
+  height: rem(230px);
+  border: 1px solid black;
+
+
+}
