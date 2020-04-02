@@ -3,8 +3,8 @@
 
 
 .sidebar {
-  position: fixed;
-  z-index: 150;
+  //position: fixed;
+  //z-index: 150;
   top: 0;
   bottom: 0;
   left: 0;
@@ -13,12 +13,12 @@
   color: $secondary;
   height: 100vh;
   box-shadow: 6px 6px 12px rgba(0,0,0,0.175);
-  transform: translate3d(-100%,0,0);
+  //transform: translate3d(-100%,0,0);
   transition: transform 0.3s ease-out;
 
 }
 
-.sidebarShow {
+.sidebar--show {
   transform: translate3d(0,0,0);
 
 }

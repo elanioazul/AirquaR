@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { SidebarModule } from 'ng-sidebar';
 
+
 import { MapComponent } from './components/shared/map/map.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -18,6 +19,8 @@ import { StationsListComponent } from './components/airmeteo/stations-list/stati
 import { ParametersListComponent } from './components/airmeteo/parameters-list/parameters-list.component';
 import { StationsListHeatmapComponent } from './components/airmeteo/stations-list-heatmap/stations-list-heatmap.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { SidebarNpmComponent } from './components/shared/sidebar-npm/sidebar-npm.component';
+
 
 @NgModule({
   declarations: [
@@ -35,11 +38,13 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
     StationsListComponent,
     ParametersListComponent,
     StationsListHeatmapComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarNpmComponent
   ],
   imports: [
     BrowserModule,
     SidebarModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

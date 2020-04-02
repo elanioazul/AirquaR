@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToggleSidebarService } from '../../../services/toggle-sidebar.service'
+
 
 @Component({
   selector: 'app-map',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
-  constructor() { }
+  // @ViewChild('mainNav') public mainNav;
+
+  constructor(public mySuperService:ToggleSidebarService) {
+    // this.mySuperService.sidebar = this.mainNav;
+  }
 
   ngOnInit(): void {
   }

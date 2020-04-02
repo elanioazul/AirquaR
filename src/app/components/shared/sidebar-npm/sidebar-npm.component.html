@@ -1,0 +1,60 @@
+<ng-sidebar-container>
+
+  <!-- A sidebar -->
+  <ng-sidebar [opened]="opened">
+    <div class="sidebar">
+      <button type="button" class="btn btn--close sidebar__close">&times;</button>
+      <h1 class="sidebar__title">Geocatalog</h1>
+      <div class="sidebar__body">
+          <ul class="sidebar__sublist">
+              <div class="checkbox-option">
+                  <span>Select all</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="selectall">
+                  <label class="sidebar__label" for="selectall"></label>
+              </div>
+          </ul>
+          <h2 class="sidebar__subtitle">Madrid City Layers</h2>
+          <ul class="sidebar__sublist">
+              <div class="checkbox-option">
+                  <span>Barrios</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="barrios" name="barrios">
+                  <label class="sidebar__label" for="barrios"></label>
+              </div>
+              <div class="checkbox-option">
+                  <span>Portales</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="portales" name="portales">
+                  <label class="sidebar__label" for="portales"></label>
+              </div>
+              <div class="checkbox-option">
+                  <span>Extrusion 3D</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="extrusion" name="extrusion">
+                  <label class="sidebar__label" for="extrusion"></label>
+              </div>
+              <div class="checkbox-option">
+                  <span>Camaras Madrid Central</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="camaras" name="camaras">
+                  <label class="sidebar__label" for="camaras"></label>
+              </div>
+          </ul>
+          <h2 class="sidebar__subtitle">Meteo & Air Quality</h2>
+          <ul class="sidebar__sublist">
+              <div class="checkbox-option">
+                  <span>Meteo</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="meteo" name="meteo">
+                  <label class="sidebar__label" for="meteo"></label>
+              </div>
+              <div class="checkbox-option">
+                  <span>Air quality</span>
+                  <input class="sidebar__checkbox" type="checkbox" id="air" name="air">
+                  <label class="sidebar__label" for="air"></label>
+              </div>
+          </ul>
+      </div>
+
+    </div>
+  </ng-sidebar>
+
+  <!-- Page content an idea would be inserting map component here-->
+
+
+</ng-sidebar-container>

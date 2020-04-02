@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
+import { ToggleSidebarService } from 'src/app/services/toggle-sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,16 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  public opened: boolean = false;
+  // @Input() isOpen: boolean;
+  // public clase: string;
+  //[ngClass]="{sidebar: isOpen, sidebarShow: !isOpen}"
 
-  public toggleSidebar() {
-    this.opened = !this.opened;
+  //suscribe the sidebar to the observable
+  constructor(private _toggleService:ToggleSidebarService) { }
+
+  ngOnInit() {
+    this._toggleService.openSidebar$
+    .subscribe(
+      instruction => {
+        if (instruction = false) {
+          alert('la sidebar debe NO estar desplegada');
+        } else if (instruction = true) {
+          alert('la sidebar debe estar desplegada')
+        }
+
+      }
+    );
   }
 
+  // sidebarOpen() {
+  //   this.isOpen = true;
+  //   this.clase = 'sidebarShow'
+  // }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  // sidebarClose() {
+  //   this.isOpen = false;
+  //   this.clase = 'sidebar'
+  // }
 
 }
