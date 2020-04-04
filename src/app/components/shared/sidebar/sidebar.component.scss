@@ -1,7 +1,11 @@
 @import '../../../../sass/variables';
 @import '../../../../sass/rem';
 
+.btnsvg-filters {
+  margin-left: 2rem;
 
+
+}
 .sidebar {
   position: fixed;
   z-index: 150;
@@ -14,7 +18,7 @@
   height: 100vh;
   box-shadow: 6px 6px 12px rgba(0,0,0,0.175);
   transform: translate3d(-100%,0,0);
-  transition: transform 0.3s ease-out;
+  transition: transform 0.6s ease-out;
 
 }
 

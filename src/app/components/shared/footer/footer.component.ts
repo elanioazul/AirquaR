@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { ToggleSidebarService } from '../../../services/toggle-sidebar.service'
+import { Component, OnInit, Output, HostListener } from '@angular/core';
 
 
 
@@ -10,23 +9,21 @@ import { ToggleSidebarService } from '../../../services/toggle-sidebar.service'
 })
 export class FooterComponent implements OnInit {
 
-  public isOpen = false;
 
-  constructor(private _toggleService:ToggleSidebarService) {
+
+  constructor() {
 
   }
+
+
 
   ngOnInit(): void {
   }
 
-  //this method is design to call the sendInstruction method from the service, passing in a instruction.
-  openSidebar() {
-    this._toggleService.sendInstruction(this.isOpen);
-  }
 
-  toggleSidebar() {
-    this.isOpen = !this.isOpen;
-  }
+
+
+
 
 
 
