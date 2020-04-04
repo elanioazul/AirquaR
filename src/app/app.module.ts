@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { SidebarModule } from 'ng-sidebar';
+
 
 
 import { MapComponent } from './components/shared/map/map.component';
@@ -19,7 +19,6 @@ import { StationsListComponent } from './components/airmeteo/stations-list/stati
 import { ParametersListComponent } from './components/airmeteo/parameters-list/parameters-list.component';
 import { StationsListHeatmapComponent } from './components/airmeteo/stations-list-heatmap/stations-list-heatmap.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
-import { SidebarNpmComponent } from './components/shared/sidebar-npm/sidebar-npm.component';
 
 
 @NgModule({
@@ -38,12 +37,10 @@ import { SidebarNpmComponent } from './components/shared/sidebar-npm/sidebar-npm
     StationsListComponent,
     ParametersListComponent,
     StationsListHeatmapComponent,
-    SidebarComponent,
-    SidebarNpmComponent
+    SidebarComponent
   ],
   imports: [
-    BrowserModule,
-    SidebarModule.forRoot()
+    BrowserModule
 
   ],
   providers: [],
