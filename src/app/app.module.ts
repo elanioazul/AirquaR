@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
 
 import { MapComponent } from './components/shared/map/map.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -41,7 +42,8 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],

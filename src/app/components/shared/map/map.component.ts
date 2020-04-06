@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapboxGLService } from '../../../services/mapbox-gl.service';
 import * as mapboxgl from 'mapbox-gl';
+
 import { StationsDataService } from 'src/app/services/stations-data.service';
 
-//import { GeoJSON } from '../../../classes/map';
+
 
 @Component({
   selector: 'app-map',
@@ -55,7 +56,8 @@ export class MapComponent implements OnInit {
   //data
   source: any; //live connection with mapbox
   markers: any; //will supply the data that update that source
-
+  markersAir = [];
+  markersMeteo = [];
 
   constructor(private mapService: MapboxGLService, private stationsData: StationsDataService) {}
 
@@ -63,10 +65,23 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
+    this.initializeMap();
 
-    this.buildMap();
-    this.map.addControl(new mapboxgl.NavigationControl());
-    this.map.addControl(this.scale);
+  }
+
+  private initializeMap() {
+    /// locate the user
+    if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.map.flyTo({
+          center: [this.lng, this.lat]
+        })
+      });
+    }
+
+    this.buildMap()
 
   }
 
@@ -79,12 +94,27 @@ export class MapComponent implements OnInit {
       pitch: this.pitch,
       bearing: this.bearing
     });
+    //add map controls and scale
+    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(this.scale);
+    //add markers of stations
 
   }
 
   // Funcion manejadora del evento que cambia el estilo en función del id del input
   switchLayer(layerId) {
     this.map.setStyle('mapbox://styles/mapbox/' + layerId);
+  }
+
+  //trae marcadores de bbdd (llamada mokapi aún)
+  getMarkers() {
+
+    this.stationsData.getAirStations()
+    .subscribe(data => this.markersAir = data);
+
+
+    this.stationsData.getMeteoStations()
+    .subscribe(data => this.markersMeteo = data);
   }
 
 

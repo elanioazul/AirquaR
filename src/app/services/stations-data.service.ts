@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { GeoJSON } from '../classes/map';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StationsDataService {
+
+  private _mokapiAir = 'https://5e8afb4dbe5500001689e45f.mockapi.io/api/v1/airStations';
+  private _mokapiMeteo = 'https://5e8afb4dbe5500001689e45f.mockapi.io/api/v1/meteoStations';
 
   airStations: object = {
     "type": "FeatureCollection",
@@ -1689,7 +1695,15 @@ export class StationsDataService {
 
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getAirStations(): Observable<GeoJSON[]> {
+    return this.http.get<GeoJSON[]>(this._mokapiAir)
+  }
+
+  getMeteoStations(): Observable<GeoJSON[]> {
+    return this.http.get<GeoJSON[]>(this._mokapiMeteo)
+  }
 
 
 }
