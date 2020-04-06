@@ -2,7 +2,7 @@
 @import '../../../../sass/rem';
 
 
-.canvas {
+.map {
   height: 86vh;
 
 
@@ -10,7 +10,17 @@
   font-family: $font-family-seconday;
   position: relative;
 
+  background-image: url(../../../../assets/icons/grid.svg);
+}
 
+.menu {
+  position: absolute;
+  z-index: 10;
+  right: 3rem;
+  top: 1rem;
+  background: $secondary;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 

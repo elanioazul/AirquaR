@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-
+import { FormsModule } from '@angular/forms';
 
 
 import { MapComponent } from './components/shared/map/map.component';
@@ -40,7 +40,8 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
     SidebarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
 
   ],
   providers: [],
