@@ -8,10 +8,11 @@ import { Observable, of } from 'rxjs';
 })
 export class StationsDataService {
 
+  //mierda mockAPI que solo acepta JSON no geoJSON
   private _mokapiAir = 'https://5e8afb4dbe5500001689e45f.mockapi.io/api/v1/airStations';
   private _mokapiMeteo = 'https://5e8afb4dbe5500001689e45f.mockapi.io/api/v1/meteoStations';
 
-  airStations: object = {
+  public airStationsGeoJSON: any = {
     "type": "FeatureCollection",
     "features": [{
         "type": "Feature",
@@ -856,7 +857,7 @@ export class StationsDataService {
     }]
   };
 
-  meteoStations: object = {
+  public meteoStationsGeoJSON: any = {
     "type": "FeatureCollection",
     "features": [{
         "type": "Feature",
@@ -1697,13 +1698,21 @@ export class StationsDataService {
 
   constructor(private http: HttpClient) { }
 
+  //para el mockAPI
   getAirStations(): Observable<GeoJSON[]> {
     return this.http.get<GeoJSON[]>(this._mokapiAir)
   }
-
   getMeteoStations(): Observable<GeoJSON[]> {
     return this.http.get<GeoJSON[]>(this._mokapiMeteo)
   }
 
+  //para el geoJSON a pelo
+  getairStationGeoJSON(): Observable<GeoJSON[]> {
+    return this.airStationsGeoJSON;
+  }
+
+  getmeteoStationGeoJSON(): Observable<GeoJSON[]> {
+    return this.meteoStationsGeoJSON;
+  }
 
 }
