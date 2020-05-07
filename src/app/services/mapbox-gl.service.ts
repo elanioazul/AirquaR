@@ -13,28 +13,13 @@ export class MapboxGLService {
 
 
 
-  constructor() {
+  constructor(private stations: StationsDataService) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
   }
 
 
-  //metodos air/meteo
 
 
 
-  //métodos collector
-
-  // getMarkers(): FirebaseListObservable<any> {
-  //   return this.db.list('/markers')
-  // }
-
-  // createMarker(data: GeoJSON) {
-  //   return this.db.list('/markers')
-  //                 .push(data)
-  // }
-
-  // removeMarker($key: string) {
-  //   return this.db.object('/markers/' + $key).remove()
-  // }
 
 }

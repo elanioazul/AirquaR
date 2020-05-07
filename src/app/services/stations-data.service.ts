@@ -1694,25 +1694,51 @@ export class StationsDataService {
     }]
   };
 
+  public airStationPostgis: any = 'http://localhost:5000/api/v1/airstations';
+  public meteoStationsPostgis: any = 'http://localhost:5000/api/v1/meteostations';
+
 
 
   constructor(private http: HttpClient) { }
 
-  //para el mockAPI
-  getAirStations(): Observable<GeoJSON[]> {
-    return this.http.get<GeoJSON[]>(this._mokapiAir)
+
+
+
+  //metodos air/meteo
+
+  // getMarkers():
+
+  //mockAPI
+  // getAirStations(): Observable<GeoJSON[]> {
+  //   return this.http.get<GeoJSON[]>(this._mokapiAir)
+  // }
+  // getMeteoStations(): Observable<GeoJSON[]> {
+  //   return this.http.get<GeoJSON[]>(this._mokapiMeteo)
+  // }
+
+  // //geoJSON a pelo
+  // getairStationGeoJSON(): Observable<GeoJSON[]> {
+  //   return this.airStationsGeoJSON;
+  // }
+
+  // getmeteoStationGeoJSON(): Observable<GeoJSON[]> {
+  //   return this.meteoStationsGeoJSON;
+  // }
+
+  //lo que viene de postgis
+  getairStationsPostgis(): Observable<GeoJSON[]> {
+    return this.airStationPostgis
   }
-  getMeteoStations(): Observable<GeoJSON[]> {
-    return this.http.get<GeoJSON[]>(this._mokapiMeteo)
+  getmeteoStationsPostgis(): Observable<GeoJSON[]> {
+    return this.meteoStationsPostgis
   }
 
-  //para el geoJSON a pelo
-  getairStationGeoJSON(): Observable<GeoJSON[]> {
-    return this.airStationsGeoJSON;
-  }
 
-  getmeteoStationGeoJSON(): Observable<GeoJSON[]> {
-    return this.meteoStationsGeoJSON;
-  }
 
+
+  // //métodos collector
+
+  // createMarker():
+
+  // removeMarker():
 }
