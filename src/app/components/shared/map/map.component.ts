@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MapboxGLService } from '../../../services/mapbox-gl.service';
 import * as mapboxgl from 'mapbox-gl';
 
 import { StationsDataService } from 'src/app/services/stations-data.service';
 
-
-import { GeoJSON } from '../../../classes/map';
+import { GeoJSON, FeatureCollection } from '../../../classes/map';
 
 @Component({
   selector: 'app-map',
@@ -55,20 +54,28 @@ export class MapComponent implements OnInit {
   });
 
   //data
-  source: any; //live connection with mapbox
-  markersAir: any;//is holding data coming from stationsData service
-  markersMeteo: any;//is holding data coming from stationsData service
+  public source: any; //live connection with mapbox
+  public markersAir: any;//is holding data coming from stationsData service
+  public markersMeteo: any;//is holding data coming from stationsData service
 
 
 
   constructor(private mapService: MapboxGLService, private stationsData: StationsDataService) {}
 
-
+  @Input() markerAir: string
 
 
   ngOnInit() {
     debugger
-    this.markersAir = this.stationsData.getairStationsPostgis()
+    // this.stationsData.getAirStationsMokapi().subscribe( (res) => {
+    //   debugger
+    //   this.markersAir = res;
+    //   console.log(this.markersAir)
+    // }, error => {
+    //   console.error(error);
+    // })
+    this.markersAir = this.stationsData.getairStationHardcoded();
+    console.log(this.markersAir)
     debugger
     this.initializeMap();
 
@@ -103,16 +110,48 @@ export class MapComponent implements OnInit {
       bearing: this.bearing
     });
 
-    this.markersAir.forEach(markers => {
+    // this.map.on('load',  (event) => {
+    //   debugger
+    //   this.map.addSource('airEstacionesMadrid', {
+    //     type: 'geojson',
+    //     data: {
+    //       type: 'FeatureCollection',
+    //       features: []
+    //     }
+    //   })
+    //   debugger
+    //   this.source = this.map.getSource('airEstacionesMadrid')
+
+    //   this.markersAir.subscribe(markers => {
+    //     let data = new FeatureCollection(markers)
+    //     this.source.setData(data)
+    //   })
+
+    // })
+
+    // this.map.addSource('source1', {
+    //   type: 'geojson',
+    //   data: this.markersAir
+    // })
+    // this.map.addSource('source2', {
+    //   type: 'geojson',
+    //   data: this.markersMeteo
+    // })
+    // this.source = this.map.getSource('source1')
+    // this.source = this.map.getSource('source2')
+
+
+    this.markersAir.features.forEach(marker => {
       debugger
       var el = document.createElement('div');
       debugger
       el.className = 'markerAir'
 
       new mapboxgl.Marker(el)
-      .setLngLat(this.markersAir.data[0].geometry.coordinates[0])
+      .setLngLat(marker.geometry.coordinates)
       .addTo(this.map);
     })
+
 
     this.map.addControl(new mapboxgl.NavigationControl());
     this.map.addControl(this.scale);

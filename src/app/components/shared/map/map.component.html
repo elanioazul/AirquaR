@@ -13,6 +13,8 @@
             style="stroke: hsla(0, 0, 70%, 1);
                    fill: url(#transformedPattern);" />
   </svg> -->
+<div class="markerAir" *ngFor = "let airmarker of markersAir"></div>
+
   <diV class="menu" id="menu">
     <ng-container *ngFor="let control of controls">
       <input [id]="control.id" type="radio" name="rtoggle" [value]="control.value" [checked]="control.checked" (click)="switchLayer(control.id)"/>

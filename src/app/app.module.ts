@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { StationsDataService } from './services/stations-data.service';
+import { MapboxGLService } from './services/mapbox-gl.service';
+
 import { MapComponent } from './components/shared/map/map.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -46,7 +49,7 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [StationsDataService, MapboxGLService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
