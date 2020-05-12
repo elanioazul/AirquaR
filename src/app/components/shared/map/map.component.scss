@@ -10,7 +10,7 @@
   font-family: $font-family-seconday;
   position: relative;
 
-  background-image: url('./assets/icons/grid.svg')
+  background-image: url('/assets/icons/grid.svg')
 }
 
 .menu {
@@ -37,7 +37,7 @@
 //markers
 
 .markerAir {
-  background-image: url('./assets/icons/airquality_house.svg');
+  background-image: url('/assets/icons/airquality_house.svg');
   background-size: cover;
   width: 50px;
   height: 50px;
@@ -47,7 +47,7 @@
 }
 
 .markerMeteo {
-  background-image: url('./assets/icons/thermometer.svg');
+  background-image: url('/assets/icons/thermometer.svg');
   background-size: cover;
   width: 50px;
   height: 50px;

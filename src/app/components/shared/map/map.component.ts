@@ -52,7 +52,7 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger
+
     // this.stationsData.getAirStationsMokapi().subscribe( (res) => {
     //   debugger
     //   this.markersAir = res;
@@ -62,7 +62,7 @@ export class MapComponent implements OnInit {
     // })
     this.markersAir = this.stationsData.getairStationHardcoded().features;
     console.log(this.markersAir)
-    debugger
+
     this.initializeMap();
 
 
@@ -71,13 +71,13 @@ export class MapComponent implements OnInit {
   initializeMap() {
     /// locate the user
     if (navigator.geolocation) {
-      debugger
+
        navigator.geolocation.getCurrentPosition(position => {
         this.mapService.lat = position.coords.latitude;
         this.mapService.lng = position.coords.longitude;
-        debugger
+
         this.mapService.buildMap();
-        debugger
+
         this.mapService.addMarker(this.markersAir);
         // this.map.flyTo({
         //   center: [this.lng, this.lat]

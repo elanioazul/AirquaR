@@ -873,7 +873,7 @@ export class StationsDataService {
 
   //mockAPI
   getAirStationsMokapi(): Observable<any> {
-    debugger
+
     return this.http.get<any>(this._mokapiAir)
   }
   getMeteoStationsMokapi(): Observable<GeoJSON[]> {
@@ -891,7 +891,7 @@ export class StationsDataService {
 
   //lo que viene de postgis
   getairStationsPostgis(): Observable<any> {
-    debugger
+
     return this.http.get(this.airStationPostgis)
   }
   getmeteoStationsPostgis(): Observable<GeoJSON[]> {
