@@ -891,7 +891,7 @@ export class StationsDataService {
 
   //lo que viene de postgis
   getairStationsPostgis(): Observable<any> {
-
+    debugger
     return this.http.get(this.airStationPostgis)
   }
   getmeteoStationsPostgis(): Observable<GeoJSON[]> {

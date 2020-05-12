@@ -53,8 +53,12 @@ export class MapboxGLService {
       container.classList.add('markerAir');
       debugger
       const coords = new mapboxgl.LngLat(marker.geometry.coordinates[0], marker.geometry.coordinates[1]);
-      debugger
+
+
       new mapboxgl.Marker(container).setLngLat(coords).addTo(this.map);
+      // new mapboxgl.Marker(container)
+      //     .setLngLat(marker.geometry.coordinates)
+      //     .addTo(this.map)
     })
   }
 
