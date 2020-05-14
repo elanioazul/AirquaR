@@ -31,7 +31,6 @@ export class MapboxGLService {
 
 
   buildMap() {
-    debugger
     this.map = new mapboxgl.Map({
       container: 'map', //el tag del html #map
       style: this.style,
@@ -40,25 +39,17 @@ export class MapboxGLService {
       pitch: this.pitch,
       bearing: this.bearing
     });
-    debugger
     this.map.addControl(new mapboxgl.NavigationControl());
     this.map.addControl(this.scale);
   }
 
-  addMarker(markers) {
-    debugger
+  addMarkers(markers) {
     markers.forEach(marker => {
       const container = document.createElement('div');
-      debugger
       container.classList.add('markerAir');
-      debugger
-      const coords = new mapboxgl.LngLat(marker.geometry.coordinates[0], marker.geometry.coordinates[1]);
-
-
-      new mapboxgl.Marker(container).setLngLat(coords).addTo(this.map);
-      // new mapboxgl.Marker(container)
-      //     .setLngLat(marker.geometry.coordinates)
-      //     .addTo(this.map)
+      new mapboxgl.Marker(container)
+           .setLngLat(marker.geometry.coordinates)
+           .addTo(this.map)
     })
   }
 

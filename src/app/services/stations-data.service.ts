@@ -8,11 +8,6 @@ import { Observable, of } from 'rxjs';
 })
 export class StationsDataService {
 
-  //mierda mockAPI que solo acepta JSON no geoJSON
-  private _mokapiAir: any = 'https://5e8afb4dbe5500001689e45f.mockapi.io/api/v1/airStations';
-  private _mokapiMeteo: any = 'https://5e8afb4dbe5500001689e45f.mockapi.io/api/v1/meteoStations';
-
-
   public airStationPostgis: any = 'http://localhost:5000/api/v1/airstations';
   public meteoStationsPostgis: any = 'http://localhost:5000/api/v1/meteostations';
 
@@ -861,49 +856,32 @@ export class StationsDataService {
     }]
   };
 
-
   constructor(private http: HttpClient) { }
 
 
 
 
-  //metodos air/meteo
-
-  // getMarkers():
-
-  //mockAPI
-  getAirStationsMokapi(): Observable<any> {
-
-    return this.http.get<any>(this._mokapiAir)
-  }
-  getMeteoStationsMokapi(): Observable<GeoJSON[]> {
-    return this.http.get<GeoJSON[]>(this._mokapiMeteo)
-  }
 
   //geoJSON a pelo
   getairStationHardcoded() {
     return this.airStationsHardCoded;
   }
 
-  // getmeteoStationGeoJSON(): Observable<GeoJSON[]> {
-  //   return this.meteoStationsGeoJSON;
-  // }
+
 
   //lo que viene de postgis
   getairStationsPostgis(): Observable<any> {
     debugger
     return this.http.get(this.airStationPostgis)
   }
-  getmeteoStationsPostgis(): Observable<GeoJSON[]> {
-    return this.meteoStationsPostgis
+
+
+  getmeteoStationsPostgis(): Observable<any> {
+    return this.http.get(this.meteoStationsPostgis)
   }
 
 
 
 
-  // //métodos collector
 
-  // createMarker():
-
-  // removeMarker():
 }

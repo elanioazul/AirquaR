@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MapboxGLService } from '../../../services/mapbox-gl.service';
 
+import { Subscription, Observable, from, empty } from 'rxjs';
 
 import { StationsDataService } from 'src/app/services/stations-data.service';
 
@@ -44,56 +45,45 @@ export class MapComponent implements OnInit {
   public markersAir: any;//is holding data coming from stationsData service
   public markersMeteo: any;//is holding data coming from stationsData service
 
+  private subscriptions: Subscription[] = [];
 
-
-  constructor(private mapService: MapboxGLService, private stationsData: StationsDataService) {}
+  constructor(private mapService: MapboxGLService, private stationsData: StationsDataService) { }
 
 
 
 
   ngOnInit() {
     debugger
-    this.stationsData.getairStationsPostgis().subscribe( (res) => {
+    this.stationsData.getairStationsPostgis().subscribe((res) => {
       debugger
       this.markersAir = res[0].geojson.features;
-      debugger
       console.log(this.markersAir)
+      this.initializeMap(this.markersAir);
     }, error => {
       console.error(error);
     })
-    //this.markersAir = this.stationsData.getairStationHardcoded().features;
-    //console.log(this.markersAir)
-
-    this.initializeMap();
-
-
   }
 
-  initializeMap() {
-    /// locate the user
-    if (navigator.geolocation) {
-
-       navigator.geolocation.getCurrentPosition(position => {
+  initializeMap(markers) {
+    this.mapService.buildMap();
+    this.mapService.addMarkers(markers);
+    /*if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
         this.mapService.lat = position.coords.latitude;
         this.mapService.lng = position.coords.longitude;
-        debugger
-        this.mapService.buildMap();
-        debugger
-        this.mapService.addMarker(this.markersAir);
-
       });
-    }
-
+    }*/
   }
 
 
-  // Funcion manejadora del evento que cambia el estilo en función del id del input
   switchLayer(layerId) {
     this.mapService.map.setStyle('mapbox://styles/mapbox/' + layerId);
   }
 
 
-
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 
 
 
