@@ -14,7 +14,7 @@ $alternative: #323d48;
 //color buttons-------------------------------------------------------------
 $cancel: #DB545D;
 $edit: #8dc4b4;
-$login: #48a1f4;
+$success: #48a1f4;
 $signup: #dd8731;
 //grey scale------------------------------------------------------------------
 $grey-dark: #7d7d7d;
@@ -30,7 +30,7 @@ $link-hover: none;
 //Fonts------------------------------------------------------------------------
 $font-size: 14;
 
-$font-primary: "Arial";
+$font-primary: 'Roboto', sans-serif;
 $font-secondary: "Menlo-Regular", monospace;
 
 $font-family-primary: $font-primary, sans-serif;

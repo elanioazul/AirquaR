@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +24,10 @@ import { StationsListComponent } from './components/airmeteo/stations-list/stati
 import { ParametersListComponent } from './components/airmeteo/parameters-list/parameters-list.component';
 import { StationsListHeatmapComponent } from './components/airmeteo/stations-list-heatmap/stations-list-heatmap.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { LoginComponent } from './components/shared/login/login.component';
+import { SignupComponent } from './components/shared/signup/signup.component';
+
+
 
 
 @NgModule({
@@ -41,12 +46,15 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
     StationsListComponent,
     ParametersListComponent,
     StationsListHeatmapComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
 
   ],
   providers: [StationsDataService, MapboxGLService],

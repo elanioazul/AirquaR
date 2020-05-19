@@ -53,9 +53,7 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger
     this.stationsData.getairStationsPostgis().subscribe((res) => {
-      debugger
       this.markersAir = res[0].geojson.features;
       console.log(this.markersAir)
       this.initializeMap(this.markersAir);

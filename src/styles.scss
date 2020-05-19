@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@500&display=swap');
+
+
 @import './sass/reset';
 @import './sass/variables';
 @import './sass/base';
 @import './sass/rem';
 
 @import './app/components/shared/map/map.component'
+
+
