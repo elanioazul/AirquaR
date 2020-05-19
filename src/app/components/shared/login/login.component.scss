@@ -1,0 +1,128 @@
+@import 'variables';
+@import 'btn';
+@import 'rem';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.form {
+  margin: 80px 15px 40px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    display: block;
+    font-family: $font-primary;
+    font-weight: 500;
+    margin-bottom: 25px;
+  }
+
+  &__subtitle {
+    color: black;
+    margin-top: 60px;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+    margin-top: 5px;
+
+    &--password {
+      margin-top: rem(10px);
+    }
+  }
+  &__box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: $lime;
+    border-radius: 8px 0px 0px 8px;
+    height: 49px;
+    width: 25%;
+
+    &--password {
+      height: 100px;
+      width: 82px;
+    }
+
+  }
+
+  &__icon {
+    fill: white;
+  }
+
+  &__control {
+    width: 100%;
+    padding: 16px 0px;
+    border-radius: 0px 8px 8px 0px;
+    border: 1px solid $grey-medium;
+    opacity: 0.8;
+
+    &:focus {
+      box-shadow: (0 2px 2px rgba($grey2-light, 1));
+    }
+
+    &::placeholder {
+        color: $alternative;
+        padding-left: 5px;
+        opacity: 0.5;
+        font-family: $font-secondary;
+    }
+
+    &--passwordup {
+      display: inline-block;
+      border-radius: 0px 8px 0px 0px;
+      margin-top: 0px;
+      margin-bottom: 2px;
+      width: 100%;
+      height: 50%;
+    }
+    &--passworddown {
+      display: inline-block;
+      border-radius: 0px 0px 8px 0px;
+      margin-top: 0px;
+      width: 100%;
+      height: 50%;
+    }
+  }
+
+  &__actions {
+    min-width: rem(290px);
+  }
+
+}
+
+.btn-primary {
+  height: rem(40px);
+  width: 100%;
+  background-color: $success;
+  color: $secondary;
+  font-weight: 500;
+  font-size: rem(17px);
+  font-family: $font-primary;
+  margin: 25px 0px;
+  text-transform: uppercase;
+
+}
+
+.btn-secondary {
+  height: rem(40px);
+  width: 50%;
+  background-color: $signup;
+  color: $secondary;
+  font-weight: 500;
+  font-size: rem(17px);
+  font-family: $font-primary;
+  margin: 25px 0px;
+  text-transform: uppercase;
+
+
+}
