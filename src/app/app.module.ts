@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -26,6 +27,8 @@ import { StationsListHeatmapComponent } from './components/airmeteo/stations-lis
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { LoginComponent } from './components/shared/login/login.component';
 import { SignupComponent } from './components/shared/signup/signup.component';
+import { HomeComponent } from './components/shared/home/home.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 
 
@@ -49,9 +52,12 @@ import { SignupComponent } from './components/shared/signup/signup.component';
     SidebarComponent,
     LoginComponent,
     SignupComponent,
+    HomeComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule

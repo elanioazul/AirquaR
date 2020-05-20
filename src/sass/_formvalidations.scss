@@ -1,0 +1,9 @@
+@import 'variables';
+
+.input-error {
+  border: 1px solid $error;
+}
+
+.error {
+  color: $error;
+}
