@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   formLogin: FormGroup;
-
+  showErrorMessage: boolean;
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
 
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   userNameHasError(form) {
-    if (form.controls.username || form.controls.username.dirty) {
+    if (form.controls.username.touched || form.controls.username.dirty) {
       return form.controls.username.errors?.required || form.controls.username.errors?.minlength;
     }
   }
@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
 
   submit(form) {
     this.auth.login(form).subscribe(() => this.router.navigate(['/home']))
+  }
+
+  errorClose() {
+    this.showErrorMessage= false;
   }
 
 }

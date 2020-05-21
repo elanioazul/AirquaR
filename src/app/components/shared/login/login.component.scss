@@ -2,10 +2,17 @@
 @import 'btn';
 @import 'rem';
 
+.logo {
+  height: 150px;
+  width: 200px;
+  display: block;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -66,10 +73,6 @@
     border: 1px solid $grey-medium;
     opacity: 0.8;
 
-    &:focus {
-      box-shadow: (0 2px 2px rgba($grey2-light, 1));
-    }
-
     &::placeholder {
         color: $alternative;
         padding-left: 5px;
@@ -96,6 +99,7 @@
 
   &__actions {
     min-width: rem(290px);
+
   }
 
 }
@@ -108,12 +112,16 @@
   font-weight: 500;
   font-size: rem(17px);
   font-family: $font-primary;
-  margin: 25px 0px;
+  margin: 45px 0px;
   text-transform: uppercase;
+  cursor: pointer;
 
 }
-
-.btn-secondary {
+.link-gosignup-container {
+  display: flex;
+  justify-content: center;
+}
+.btn-gosignup {
   height: rem(40px);
   width: 50%;
   background-color: $signup;
@@ -121,8 +129,13 @@
   font-weight: 500;
   font-size: rem(17px);
   font-family: $font-primary;
-  margin: 25px 0px;
+  margin: 20px 0px;
   text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.7em;
+
+
 
 
 }

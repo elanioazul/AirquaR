@@ -6,6 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, Form } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { Register } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,11 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/local`, form.value, this.httpOptions).pipe(
       tap(response => this.storage.set('token', response.jwt))
     );
+  }
+
+  signup(user: Register): Observable<any> {
+    return this.http.post<any>(`${this.url}/local/register`, user, this.httpOptions).pipe(
+      tap(() => this.router.navigate(['/login']))
+    )
   }
 }
