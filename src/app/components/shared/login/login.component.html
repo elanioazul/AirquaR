@@ -28,7 +28,7 @@
       </div>
       <input class="form__control" type="text" name="username" id="username" placeholder="Username"
       [ngClass]="{'input-error': userNameHasError(formLogin) }"
-      formControlName="username" minlength="4">
+      formControlName="username" required minlength="4">
     </div>
     <div class="form__row" [ngClass]="{'error': passwordHasError(formLogin) }">
       <div class="form__box">
@@ -38,7 +38,7 @@
       </div>
       <input class="form__control" type="password" id="password" name="password" placeholder="Password"
       [ngClass]="{'input-error': passwordHasError(formLogin) }"
-      formControlName="password" minlength="6">
+      formControlName="password" required minlength="6">
     </div>
     <div class="form__actions">
       <button type="submit" value="Sign Up" class="btn btn-primary">Log in</button>

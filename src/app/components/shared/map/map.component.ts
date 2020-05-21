@@ -60,11 +60,20 @@ export class MapComponent implements OnInit {
     }, error => {
       console.error(error);
     })
+
+    this.stationsData.getmeteoStationsPostgis().subscribe((res) => {
+      this.markersMeteo = res[0].geojson.features;
+      console.log(this.markersMeteo)
+      this.initializeMap(this.markersMeteo);
+    }, error => {
+      console.error(error);
+    })
   }
 
   initializeMap(markers) {
     this.mapService.buildMap();
-    this.mapService.addMarkers(markers);
+    this.mapService.addMarkersAir(markers);
+    this.mapService.addMarkersMeteo(markers);
     /*if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.mapService.lat = position.coords.latitude;

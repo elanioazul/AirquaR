@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../../services/users.service'
+import { UsersService } from '../../../services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,16 @@ import { UsersService } from '../../../services/users.service'
 })
 export class HeaderComponent implements OnInit {
 
-  public currentUser = 'example2';
+  public currentUser = 'Login';
 
-  constructor(private users: UsersService) { }
+  constructor(private users: UsersService, private router: Router) { }
 
   ngOnInit(): void {
     this.users.getUsersPostgres().subscribe((res) => {
-      this.currentUser = res;
+      if (res) {
+        this.currentUser = res;
+      } else { this.currentUser = 'Login' }
+
     })
   }
 

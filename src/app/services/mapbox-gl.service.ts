@@ -43,10 +43,20 @@ export class MapboxGLService {
     this.map.addControl(this.scale);
   }
 
-  addMarkers(markers) {
+  addMarkersAir(markers) {
     markers.forEach(marker => {
       const container = document.createElement('div');
       container.classList.add('markerAir');
+      new mapboxgl.Marker(container)
+           .setLngLat(marker.geometry.coordinates)
+           .addTo(this.map)
+    })
+  }
+
+  addMarkersMeteo(markers) {
+    markers.forEach(marker => {
+      const container = document.createElement('div');
+      container.classList.add('markerMeteo');
       new mapboxgl.Marker(container)
            .setLngLat(marker.geometry.coordinates)
            .addTo(this.map)
