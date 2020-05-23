@@ -1,17 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { StationsDataService } from './services/stations-data.service';
 import { MapboxGLService } from './services/mapbox-gl.service';
-
 import { MapComponent } from './components/shared/map/map.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -21,13 +17,9 @@ import { SignupComponent } from './components/shared/signup/signup.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
-
     MapComponent,
     HeaderComponent,
     FooterComponent,
@@ -43,7 +35,6 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     FormsModule,
     HttpClientModule,
     AppRoutingModule
-
   ],
   providers: [StationsDataService, MapboxGLService],
   bootstrap: [AppComponent]

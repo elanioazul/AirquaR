@@ -13,7 +13,7 @@ import { Register } from '../classes/user';
 })
 export class AuthService {
 
-  url: string = `${environment.airquaAPI}auth`;
+  url: string = `${environment.airquaAPI}auth/signup`;
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -13,18 +13,11 @@ export class StationsDataService {
 
   constructor(private http: HttpClient) { }
 
-  //lo que viene de postgis
-  getairStationsPostgis(): Observable<any> {
+  getAirStations(): Observable<any> {
     return this.http.get(this.airStationPostgis)
   }
 
-
-  getmeteoStationsPostgis(): Observable<any> {
+  getMeteoStations(): Observable<any> {
     return this.http.get(this.meteoStationsPostgis)
   }
-
-
-
-
-
 }

@@ -53,27 +53,29 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-    this.stationsData.getairStationsPostgis().subscribe((res) => {
+    /*this.stationsData.getAirStations().subscribe((res) => {
       this.markersAir = res[0].geojson.features;
       console.log(this.markersAir)
       this.initializeMap(this.markersAir);
     }, error => {
       console.error(error);
-    })
+    })*/
+    this.mapService.buildMap();
 
-    this.stationsData.getmeteoStationsPostgis().subscribe((res) => {
-      this.markersMeteo = res[0].geojson.features;
-      console.log(this.markersMeteo)
-      this.initializeMap(this.markersMeteo);
-    }, error => {
-      console.error(error);
-    })
+
+    // this.stationsData.getmeteoStationsPostgis().subscribe((res) => {
+    //   this.markersMeteo = res[0].geojson.features;
+    //   console.log(this.markersMeteo)
+    //   this.initializeMap(this.markersMeteo);
+    // }, error => {
+    //   console.error(error);
+    // })
   }
 
   initializeMap(markers) {
     this.mapService.buildMap();
     this.mapService.addMarkersAir(markers);
-    this.mapService.addMarkersMeteo(markers);
+    //this.mapService.addMarkersMeteo(markers);
     /*if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.mapService.lat = position.coords.latitude;
