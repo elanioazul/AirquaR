@@ -35,13 +35,13 @@ export class SignupComponent implements OnInit {
 
   emailHasError(form) {
     if (form.controls.email?.touched  || form.controls.email?.dirty)  {
-      return form.controls.email.errors?.pattern || form.controls.email?.errors?.required;
+      return form.controls.email.errors?.pattern || form.controls.email.errors?.required;
     }
   }
 
   userNameHasError(form) {
-    if (form.controls.username.touched  || form.controls.username.dirty)  {
-      return form.controls.username.errors?.pattern || form.controls.username.errors?.required || form.controls.username.errors?.minlength;
+    if (form.controls.username.touched || form.controls.username.dirty) {
+      return form.controls.username.errors?.required || form.controls.username.errors?.minlength;
     }
   }
 

@@ -1,9 +1,8 @@
 @import 'variables';
 
 .input-error {
-  border: 1px solid $error;
+  border: 1.5px solid $error;
+  border-radius: 8px;
 }
 
-.error {
-  border: 1px solid $error;
-}
+
