@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, HostBinding } from '@angular/core';
+import { MapboxGLService } from 'src/app/services/mapbox-gl.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -23,7 +24,7 @@ export class SidebarComponent implements OnInit {
 
   ]
 
-  constructor() { }
+  constructor(private mapService: MapboxGLService) { }
 
 
   ngOnInit() {

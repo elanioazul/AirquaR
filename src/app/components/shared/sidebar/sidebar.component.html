@@ -2,9 +2,7 @@
   <svg class="svg svg-filters" xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 24 24" fill="none" stroke="#606060" stroke-linejoin="bevel">
           <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>
   </svg>
-
 </button>
-
 <div class="sidebar" *ngIf="isOpen" [ngClass]="isOpen ? 'sidebarShow' : 'sidebar'">
   <button (click)="toggle()" type="button" class="btn btn--close sidebar__close">&times;</button>
   <h1 class="sidebar__title">Geocatalog</h1>
@@ -13,20 +11,15 @@
         <input (click)="checkAllOptions()" type="checkbox">
         <span>Select all</span>
       </ul>
-
       <h2 class="sidebar__subtitle">Madrid City Layers</h2>
-
       <ul class="sidebar__sublist" *ngFor="let checkbox of checkboxesCity">
         <input type="checkbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value">
         <span>{{checkbox.name}}</span>
       </ul>
-
       <h2 class="sidebar__subtitle">Meteo & Air Quality</h2>
-
       <ul class="sidebar__sublist" *ngFor="let checkbox of checkboxesAir">
         <input type="checkbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value">
         <span>{{checkbox.name}}</span>
       </ul>
   </div>
-
 </div>

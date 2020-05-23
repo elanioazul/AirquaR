@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Subscription, Observable, from, empty } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,16 +24,22 @@ export class MapboxGLService {
     unit: 'meters'
   });
 
-  layers = {
+  private subscriptions: Subscription[] = [];
+
+  public layers = {
     air: {
       visible: true,
-      markers: []
+      markers: [],
+      linker: ''
     },
     meteo: {
       visible: true,
-      markers: []
+      markers: [],
+      linker: ''
     },
   };
+
+  public toggleableLayersIds = ['airmarkers', 'meteomarkers'];
 
   constructor(private stations: StationsDataService) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
@@ -70,11 +76,47 @@ export class MapboxGLService {
 
 
   initSources() {
-
+    this.map.on('load', function() {
+      this.map.addSource('air-markers', {
+        type: 'geojson',
+        data: this.stations.getAirStations
+      })
+      this.map.addSource('meteo-markers', {
+        type: 'geojson',
+        data: this.stations.getMeteoStation
+      })
+    })
   }
 
   initLayers() {
-
+    this.map.on('load', function() {
+      this.map.addLayer({
+        id: 'air-markers',
+        source: 'air-markers',
+        type: 'symbol',
+        layout: {
+          'icon-image': '{icon}-15',
+          'icon-allow-overlap': true
+        },
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#007cbf'
+        }
+      })
+      this.map.addLayer({
+        id: 'meteo-markers',
+        source: 'meteo-markers',
+        type: 'symbol',
+        layout: {
+          'icon-image': '{icon}-15',
+          'icon-allow-overlap': true
+        },
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#bf6600'
+        }
+      })
+    })
   }
 
 
@@ -107,7 +149,7 @@ export class MapboxGLService {
     return this.stations.getAirStations().pipe(
       map(res => {
         debugger
-        return res.geojson.features.map(this.parseMarker);
+        return res.geojson.features.map(this.parseMarkerAir);
       })
     );
   }
@@ -116,28 +158,35 @@ export class MapboxGLService {
     return this.stations.getMeteoStations().pipe(
       map(res => {
         debugger
-        return res.geojson.features.map(this.parseMarker);
+        return res[0].geojson.features.map(this.parseMarkerMeteo);
       })
     );
   }
 
 
-  parseMarker(marker) {
+  parseMarkerAir(marker) {
     const container = document.createElement('div');
     container.classList.add('markerAir');
     return new mapboxgl.Marker(container)
       .setLngLat(marker.geometry.coordinates);
   }
 
-  addMarkersAir(markers) {
-    markers.forEach(marker => {
-      const container = document.createElement('div');
-      container.classList.add('markerAir');
-      new mapboxgl.Marker(container)
-        .setLngLat(marker.geometry.coordinates)
-        .addTo(this.map)
-    })
+  parseMarkerMeteo(marker) {
+    const container = document.createElement('div');
+    container.classList.add('markerMeteo');
+    return new mapboxgl.Marker(container)
+      .setLngLat(marker.geometry.coordinates);
   }
+
+  // addMarkersAir(markers) {
+  //   markers.forEach(marker => {
+  //     const container = document.createElement('div');
+  //     container.classList.add('markerAir');
+  //     new mapboxgl.Marker(container)
+  //       .setLngLat(marker.geometry.coordinates)
+  //       .addTo(this.map)
+  //   })
+  // }
 
   // addMarkersMeteo(markers) {
   //   markers.forEach(marker => {
@@ -148,6 +197,39 @@ export class MapboxGLService {
   //          .addTo(this.map)
   //   })
   // }
+
+  toggleLayers() {
+    for (var i = 0; i < this.toggleableLayersIds.length; i++) {
+      let id = this.toggleableLayersIds[i];
+
+      let link = document.createElement('a');
+      link.href = '#';
+      link.className = 'active';
+      link.textContent = id;
+
+      let mapa = this.map;
+      link.onclick = function(e) {
+        var clickedLayer = link.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = mapa.getLayoutProperty(clickedLayer, 'visibility');
+
+        if(visibility === 'visible') {
+          mapa.setLayoutProperty(clickedLayer, 'visibility', 'none');
+          link.className = '';
+        } else {
+          link.className = 'active';
+          mapa.setLayoutProperty(clickedLayer, 'visibility', 'visible')
+        }
+      };
+     //this.layers.air.linker = link
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 
 
 

@@ -1,10 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MapboxGLService } from '../../../services/mapbox-gl.service';
-
-import { Subscription, Observable, from, empty } from 'rxjs';
-
 import { StationsDataService } from 'src/app/services/stations-data.service';
-
 import { GeoJSON, FeatureCollection } from '../../../classes/map';
 
 @Component({
@@ -40,59 +36,22 @@ export class MapComponent implements OnInit {
   ]
 
 
-  //data
-  public source: any; //live connection with mapbox
-  public markersAir: any;//is holding data coming from stationsData service
-  public markersMeteo: any;//is holding data coming from stationsData service
-
-  private subscriptions: Subscription[] = [];
-
   constructor(private mapService: MapboxGLService, private stationsData: StationsDataService) { }
 
 
 
 
   ngOnInit() {
-    /*this.stationsData.getAirStations().subscribe((res) => {
-      this.markersAir = res[0].geojson.features;
-      console.log(this.markersAir)
-      this.initializeMap(this.markersAir);
-    }, error => {
-      console.error(error);
-    })*/
     this.mapService.buildMap();
-
-
-    // this.stationsData.getmeteoStationsPostgis().subscribe((res) => {
-    //   this.markersMeteo = res[0].geojson.features;
-    //   console.log(this.markersMeteo)
-    //   this.initializeMap(this.markersMeteo);
-    // }, error => {
-    //   console.error(error);
-    // })
   }
-
-  initializeMap(markers) {
-    this.mapService.buildMap();
-    this.mapService.addMarkersAir(markers);
-    //this.mapService.addMarkersMeteo(markers);
-    /*if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.mapService.lat = position.coords.latitude;
-        this.mapService.lng = position.coords.longitude;
-      });
-    }*/
-  }
-
 
   switchLayer(layerId) {
     this.mapService.map.setStyle('mapbox://styles/mapbox/' + layerId);
   }
 
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
-  }
+
+
 
 
 
