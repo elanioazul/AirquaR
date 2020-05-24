@@ -149,7 +149,7 @@ export class MapboxGLService {
     );
   }
 
-  getMeteoStations() {
+  getMeteoStations(): Observable<any[]> {
     return this.stations.getMeteoStations().pipe(
       map(res => {
         return res[0].geojson.features.map(this.parseMarkerMeteo);
@@ -192,33 +192,38 @@ export class MapboxGLService {
   //   })
   // }
 
-  toggleLayers() {
-    for (var i = 0; i < this.toggleableLayersIds.length; i++) {
-      let id = this.toggleableLayersIds[i];
+  // toggleLayers() {
+  //   for (var i = 0; i < this.toggleableLayersIds.length; i++) {
+  //     let id = this.toggleableLayersIds[i];
 
-      let link = document.createElement('a');
-      link.href = '#';
-      link.className = 'active';
-      link.textContent = id;
+  //     let link = document.createElement('a');
+  //     link.href = '#';
+  //     link.className = 'active';
+  //     link.textContent = id;
 
-      let mapa = this.map;
-      link.onclick = function(e) {
-        var clickedLayer = link.textContent;
-        e.preventDefault();
-        e.stopPropagation();
+  //     let mapa = this.map;
+  //     link.onclick = function(e) {
+  //       var clickedLayer = link.textContent;
+  //       e.preventDefault();
+  //       e.stopPropagation();
 
-        var visibility = mapa.getLayoutProperty(clickedLayer, 'visibility');
+  //       var visibility = mapa.getLayoutProperty(clickedLayer, 'visibility');
 
-        if(visibility === 'visible') {
-          mapa.setLayoutProperty(clickedLayer, 'visibility', 'none');
-          link.className = '';
-        } else {
-          link.className = 'active';
-          mapa.setLayoutProperty(clickedLayer, 'visibility', 'visible')
-        }
-      };
-     //this.layers.air.linker = link
-    }
+  //       if(visibility === 'visible') {
+  //         mapa.setLayoutProperty(clickedLayer, 'visibility', 'none');
+  //         link.className = '';
+  //       } else {
+  //         link.className = 'active';
+  //         mapa.setLayoutProperty(clickedLayer, 'visibility', 'visible')
+  //       }
+  //     };
+  //    //this.layers.air.linker = link
+  //   }
+  //}
+
+  toogleLayer(layerName, visible) {
+    const mode = visible ? 'visible' : 'none';
+    this.map.setLayoutProperty(layerName, 'visibility', mode);
   }
 
   ngOnDestroy(): void {

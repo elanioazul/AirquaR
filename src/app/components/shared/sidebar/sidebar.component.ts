@@ -36,7 +36,6 @@ export class SidebarComponent implements OnInit {
 
   }
 
-
   checkAllOptions() {
     //City layers
     if (this.checkboxesCity.every(val => val.checked == true))
@@ -50,6 +49,13 @@ export class SidebarComponent implements OnInit {
       this.checkboxesAir.forEach(val => { val.checked = true });
   }
 
+  airStationsToggle(event) {
+    this.mapService.toogleLayer('airstationsLayer', event.target.checked)
+  }
+
+  meteoStationsToggle(event) {
+    this.mapService.toogleLayer('meteostationsLayer', event.target.checked)
+  }
 
 
 }
