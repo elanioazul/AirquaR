@@ -123,23 +123,19 @@ export class MapboxGLService {
   initMarkers(mapa) {
     this.getAirStations().pipe(
       map((res: any) => {
-        debugger
         this.layers.air.markers = res;
         return this.layers.air.markers;
       }),
       tap((markers: any[]) => {
-        debugger
         markers.forEach(marker => marker.addTo(mapa))
       })
     ).subscribe();
     this.getMeteoStations().pipe(
       map((res: any) => {
-        debugger
         this.layers.meteo.markers = res;
         return this.layers.meteo.markers;
       }),
       tap((markers: any[]) => {
-        debugger
         markers.forEach(marker => marker.addTo(mapa))
       })
     ).subscribe();
@@ -148,7 +144,6 @@ export class MapboxGLService {
   getAirStations(): Observable<any[]> {
     return this.stations.getAirStations().pipe(
       map(res => {
-        debugger
         return res.geojson.features.map(this.parseMarkerAir);
       })
     );
@@ -157,7 +152,6 @@ export class MapboxGLService {
   getMeteoStations() {
     return this.stations.getMeteoStations().pipe(
       map(res => {
-        debugger
         return res[0].geojson.features.map(this.parseMarkerMeteo);
       })
     );

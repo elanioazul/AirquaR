@@ -13,7 +13,7 @@ import { Register } from '../classes/user';
 })
 export class AuthService {
 
-  url: string = `${environment.airquaAPI}auth/signup`;
+  url: string = `${environment.airquaAPI}api/v1/users`;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -35,8 +35,13 @@ export class AuthService {
   }
 
   signup(user: Register): Observable<any> {
-    return this.http.post<any>(`${this.url}/local/register`, user, this.httpOptions).pipe(
+    return this.http.post<any>(`${this.url}/auth/signup`, user, this.httpOptions).pipe(
       tap(() => this.router.navigate(['/login']))
     )
+  }
+
+  logout(): void {
+    this.storage.remove('token');
+    this.router.navigate(['/login']);
   }
 }
