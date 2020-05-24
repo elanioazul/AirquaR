@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { error } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,8 +35,15 @@ export class LoginComponent implements OnInit {
   }
 
   submit(form) {
-    this.auth.login(form).subscribe(() => this.router.navigate(['/home']))
+    this.auth.login(form).subscribe(
+      (res) => {
+        this.router.navigate(['/home'])
+      }, (error) => {
+        this.showErrorMessage = error.error
+      }
+    )
   }
+
 
   errorClose() {
     this.showErrorMessage= false;

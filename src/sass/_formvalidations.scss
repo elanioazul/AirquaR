@@ -6,3 +6,19 @@
 }
 
 
+.container-error {
+  display: flex;
+  position: relative;
+  font-family: $font-primary;
+  font-size: rem(16px);
+  font-weight: 500;
+  background-color: $error;
+  color: #fff;
+  padding: 20px;
+  transition: all 0.8s;
+
+  &__message {
+    display: inline-block;
+  }
+
+}

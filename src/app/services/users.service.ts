@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class UsersService {
 
 
-  private url = `${environment.airquaAPI}/api/v1/users`;
+  private url = `${environment.airquaAPI}api/v1/users`;
 
   constructor(private http: HttpClient) { }
 
