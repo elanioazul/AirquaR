@@ -1,0 +1,148 @@
+<div class="popup popup--fullhight">
+  <button type="button" class="btn btn--close popup__close">&times;</button>
+  <div class="popup--fullhight__header">
+      <svg class="popup--fullhight__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" width="40px" height="40px">
+          <path d="M303.888 80.192C303.888 35.904 268.16 0 223.84 0c-44.288 0-79.968 34.496-79.968 78.784V256c-19.744 20.256-32.128 49.28-32.128 79.808C111.744 397.744 162 448 224 448c61.968 0 112.256-50.256 112.256-112.192 0-30.688-12.496-58.432-32.368-78.72V80.192z" fill="#dfe9f7"/>
+          <path fill="#c2d6ef" d="M191.778 64.003h64v96h-64z"/>
+          <path d="M256 280.683V159.807h-64v120.877c-19.05 11.086-32 31.494-32 55.123 0 35.346 28.652 64 64 64s64-28.654 64-64c0-23.629-12.95-44.037-32-55.124z" fill="#d64230"/>
+      </svg>
+      <h1 class="popup--fullhight__title">Meteo info</h1>
+  </div>
+  <h2 class="popup--fullhight__subtitle">Station name</h2>
+  <div class="popup--fullhight__foldable">
+      <div class="popup--fullhight__foldable-parameter">
+          <select class="form-group--control">
+              <option value="select" selected>select parameter</option>
+              <option value="no2">no2</option>
+              <option value="so2">so2</option>
+              <option value="co">co</option>
+              <option value="pm10">pm10</option>
+              <option value="pm2.5">pm2.5</option>
+              <option value="ozono">ozono</option>
+              <option value="btx">btx</option>
+              <option value="hc">hc</option>
+          </select>
+      </div>
+      <input type="date" class="popup--fullhight__foldable-setdate" placeholder="">
+      <!-- <div class="popup--fullhight__foldable-setdate">
+          <div class="popup--fullhight__foldable-setdate-mes">
+              <select class="form-group--control">
+                  <option value="select" selected>month</option>
+                  <option value="january">january</option>
+                  <option value="february">february</option>
+                  <option value="march">march</option>
+                  <option value="april">april</option>
+                  <option value="may">may</option>
+                  <option value="june">june</option>
+                  <option value="july">july</option>
+                  <option value="august">august</option>
+                  <option value="september">september</option>
+                  <option value="october">october</option>
+                  <option value="november">november</option>
+                  <option value="december">december</option>
+              </select>
+          </div>
+
+          <div class="popup--fullhight__foldable-setdate-day">
+              <select class="form-group--control">
+                  <option value="select" selected>day</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+              </select>
+          </div>
+          <div class="popup--fullhight__foldable-setdate-hour">
+              <select class="form-group--control">
+                  <option value="select" selected>hour</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+              </select>
+          </div>
+      </div> -->
+      <button type="submit" class="btn popup--fullhight__foldable-btn">Show</button>
+  </div>
+  <div class="popup--fullhight__graph"></div>
+  <div class="popup--fullhight__footer">
+      <h2 class="popup--fullhight__subtitle-botton">Add another station</h2>
+      <div class="form-group">
+          <select class="form-group--control">
+              <option value="select" selected>station</option>
+              <option value="Pza. España">Pza. España</option>
+              <option value="Escuelas Aguirre">Escuelas Aguirre</option>
+              <option value="Arturo Soria">Arturo Soria</option>
+              <option value="Avda. Ramon y Cajal">Avda. Ramon y Cajal</option>
+              <option value="Villaverde">Villaverde</option>
+              <option value="Farolillo">Farolillo</option>
+              <option value="Casa de campo">Casa de campo</option>
+              <option value="Barajas pueblo">Barajas pueblo</option>
+              <option value="Pza. del Carmen">Pza. del Carmen</option>
+              <option value="Moratalaz">Moratalaz</option>
+              <option value="Cuatro Caminos">Cuatro Caminos</option>
+              <option value="Barrio del Pilar">Barrio del Pilar</option>
+              <option value="Castellana">Castellana</option>
+              <option value="Pza. Castilla">Pza. Castilla</option>
+              <option value="Vallecas">Vallecas</option>
+              <option value="Mendez Alvaro">Mendez Alvaro</option>
+              <option value="Parque del Retiro">Parque del Retiro</option>
+              <option value="Tres Olivos">Tres Olivos</option>
+              <option value="Juan Carlos I">Juan Carlos I</option>
+              <option value="El Pardo">El Pardo</option>
+              <option value="Sanchinarro">Sanchinarro</option>
+              <option value="Pza. Eliptica">Pza. Eliptica</option>
+              <option value="Urb. Embajada">Urb. Embajada</option>
+              <option value="Ensanche Vallecas">Ensanche Vallecas</option>
+          </select>
+          <button type="submit" class="btn form-group--btn">Add</button>
+      </div>
+  </div>
+</div>

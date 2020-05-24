@@ -26,20 +26,7 @@ export class MapboxGLService {
 
   private subscriptions: Subscription[] = [];
 
-  public layers = {
-    air: {
-      visible: true,
-      markers: [],
-      linker: ''
-    },
-    meteo: {
-      visible: true,
-      markers: [],
-      linker: ''
-    },
-  };
 
-  public toggleableLayersIds = ['airmarkers', 'meteomarkers'];
 
   constructor(private stations: StationsDataService) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
@@ -56,170 +43,71 @@ export class MapboxGLService {
     });
     this.map.addControl(new mapboxgl.NavigationControl());
     this.map.addControl(this.scale);
-    this.initMarkers(this.map);
-
-    /*map.on('load', function(){
-      map.addSource('air-source', {
-        type: 'geojson',
-        data: 'http://localhost:5000/api/v1/airStations'
-      });
-      map.addLayer({
-        'id': 'drone',
-        'type': 'symbol',
-        'source': 'air-source',
-        'layout': {
-          'icon-image': 'rocket-15'
-        }
-      });
-    });*/
+    this.map.on('load', () => {
+      this.stations.getAirStations().subscribe(data => {
+        this.addSource(this.map, 'airstations', data);
+        this.addAirstationsLayer(this.map);
+        this.addClickOnAirstation(this.map);
+      })
+      this.stations.getMeteoStations().subscribe(data => {
+        this.addSource(this.map, 'meteostations', data);
+        this.addMeteostationsLayer(this.map);
+      })
+    })
+    return this.map;
   }
 
-
-  initSources() {
-    this.map.on('load', function() {
-      this.map.addSource('air-markers', {
-        type: 'geojson',
-        data: this.stations.getAirStations
-      })
-      this.map.addSource('meteo-markers', {
-        type: 'geojson',
-        data: this.stations.getMeteoStation
-      })
+  addSource(map, sourceName, data) {
+    map.addSource(sourceName, {
+      type: 'geojson',
+      data
     })
   }
 
-  initLayers() {
-    this.map.on('load', function() {
-      this.map.addLayer({
-        id: 'air-markers',
-        source: 'air-markers',
-        type: 'symbol',
-        layout: {
-          'icon-image': '{icon}-15',
-          'icon-allow-overlap': true
+  addAirstationsLayer(map) {
+    map.addLayer({
+      id: 'airstationsLayer',
+      type: 'circle',
+      source: 'airstations',
+      paint: {
+        'circle-radius': {
+          'base': 1.75,
+          'stops': [
+            [12, 10],
+            [22, 180]
+          ]
         },
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#007cbf'
-        }
-      })
-      this.map.addLayer({
-        id: 'meteo-markers',
-        source: 'meteo-markers',
-        type: 'symbol',
-        layout: {
-          'icon-image': '{icon}-15',
-          'icon-allow-overlap': true
+        'circle-color': 'Black'
+      }
+    });
+  }
+
+  addMeteostationsLayer(map) {
+    map.addLayer({
+      id: 'meteostationsLayer',
+      type: 'circle',
+      source: 'meteostations',
+      paint: {
+        'circle-radius': {
+          'base': 1.75,
+          'stops': [
+            [12, 10],
+            [22, 180]
+          ]
         },
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#bf6600'
-        }
-      })
+        'circle-color': 'Green'
+      }
+    });
+  }
+
+  addClickOnAirstation(map) {
+    map.on('click', 'airstationsLayer', (event) => {
+      new mapboxgl.Popup()
+        .setLngLat(event.features[0].geometry.coordinates)
+        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+        .addTo(map)
     })
   }
-
-
-  initMarkers(mapa) {
-    this.getAirStations().pipe(
-      map((res: any) => {
-        this.layers.air.markers = res;
-        return this.layers.air.markers;
-      }),
-      tap((markers: any[]) => {
-        markers.forEach(marker => marker.addTo(mapa))
-      })
-    ).subscribe();
-    this.getMeteoStations().pipe(
-      map((res: any) => {
-        this.layers.meteo.markers = res;
-        return this.layers.meteo.markers;
-      }),
-      tap((markers: any[]) => {
-        markers.forEach(marker => marker.addTo(mapa))
-      })
-    ).subscribe();
-  }
-
-  getAirStations(): Observable<any[]> {
-    return this.stations.getAirStations().pipe(
-      map(res => {
-        return res.geojson.features.map(this.parseMarkerAir);
-      })
-    );
-  }
-
-  getMeteoStations(): Observable<any[]> {
-    return this.stations.getMeteoStations().pipe(
-      map(res => {
-        return res[0].geojson.features.map(this.parseMarkerMeteo);
-      })
-    );
-  }
-
-
-  parseMarkerAir(marker) {
-    const container = document.createElement('div');
-    container.classList.add('markerAir');
-    return new mapboxgl.Marker(container)
-      .setLngLat(marker.geometry.coordinates);
-  }
-
-  parseMarkerMeteo(marker) {
-    const container = document.createElement('div');
-    container.classList.add('markerMeteo');
-    return new mapboxgl.Marker(container)
-      .setLngLat(marker.geometry.coordinates);
-  }
-
-  // addMarkersAir(markers) {
-  //   markers.forEach(marker => {
-  //     const container = document.createElement('div');
-  //     container.classList.add('markerAir');
-  //     new mapboxgl.Marker(container)
-  //       .setLngLat(marker.geometry.coordinates)
-  //       .addTo(this.map)
-  //   })
-  // }
-
-  // addMarkersMeteo(markers) {
-  //   markers.forEach(marker => {
-  //     const container = document.createElement('div');
-  //     container.classList.add('markerMeteo');
-  //     new mapboxgl.Marker(container)
-  //          .setLngLat(marker.geometry.coordinates)
-  //          .addTo(this.map)
-  //   })
-  // }
-
-  // toggleLayers() {
-  //   for (var i = 0; i < this.toggleableLayersIds.length; i++) {
-  //     let id = this.toggleableLayersIds[i];
-
-  //     let link = document.createElement('a');
-  //     link.href = '#';
-  //     link.className = 'active';
-  //     link.textContent = id;
-
-  //     let mapa = this.map;
-  //     link.onclick = function(e) {
-  //       var clickedLayer = link.textContent;
-  //       e.preventDefault();
-  //       e.stopPropagation();
-
-  //       var visibility = mapa.getLayoutProperty(clickedLayer, 'visibility');
-
-  //       if(visibility === 'visible') {
-  //         mapa.setLayoutProperty(clickedLayer, 'visibility', 'none');
-  //         link.className = '';
-  //       } else {
-  //         link.className = 'active';
-  //         mapa.setLayoutProperty(clickedLayer, 'visibility', 'visible')
-  //       }
-  //     };
-  //    //this.layers.air.linker = link
-  //   }
-  //}
 
   toogleLayer(layerName, visible) {
     const mode = visible ? 'visible' : 'none';
@@ -229,8 +117,5 @@ export class MapboxGLService {
   ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
-
-
-
 
 }

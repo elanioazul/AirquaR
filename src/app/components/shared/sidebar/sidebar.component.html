@@ -11,15 +11,16 @@
         <input (click)="checkAllOptions()" type="checkbox">
         <span>Select all</span>
       </ul>
-      <!-- <h2 class="sidebar__subtitle">Madrid City Layers</h2>
-      <ul class="sidebar__sublist" *ngFor="let checkbox of checkboxesCity">
-        <input type="checkbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value">
-        <span>{{checkbox.name}}</span>
-      </ul> -->
       <h2 class="sidebar__subtitle">Meteo & Air Quality</h2>
-      <ul class="sidebar__sublist" *ngFor="let checkbox of checkboxesAir">
-        <input type="checkbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value">
-        <span>{{checkbox.name}}</span>
+      <ul class="sidebar__sublist">
+        <div class="sidebar__field">
+          <input id="airstationsCheck" (change)="airStationsToggle($event)" type="checkbox" name="switchExample" class="switch" checked="checked">
+          <label for="airstationsCheck"><span class="tag is-primary">Air Stations</span></label>
+        </div>
+        <div class="sidebar__field">
+          <input id="meteostationsCheck" (change)="meteoStationsToggle($event)" type="checkbox" name="switchExample" class="switch" checked="checked">
+          <label for="meteostationsCheck"><span class="tag is-primary">Meteo Stations</span></label>
+        </div>
       </ul>
   </div>
 </div>

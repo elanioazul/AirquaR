@@ -9,7 +9,6 @@
 //---------------------
 .btnsvg-filters {
   margin-left: 2rem;
-
 }
 
 //-----------------------------------
@@ -34,7 +33,6 @@
 
 .sidebarShow {
   transform: translate3d(0,0,0);
-
 }
 
 .sidebar__title {
@@ -44,15 +42,16 @@
   height: 50px;
   font-weight: bold;
   font-size: 1.1rem;
-
-
 }
 
 .sidebar__sublist {
   display: block;
+  padding: 20px;
+}
 
-
-
+.sidebar__field {
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .sidebar__subtitle {
@@ -61,7 +60,6 @@
   padding-top: 17px;
   padding-bottom: 5px;
   padding-left: 15px;
-  //padding-right: 25px;
   background-color: $secondary;
   color: $primary;
   font-style: italic;
