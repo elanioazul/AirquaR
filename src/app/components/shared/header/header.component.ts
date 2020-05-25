@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.users.getUsersPostgres().subscribe((res) => {
-      if (res) {
-        this.currentUser = res;
-      } else { this.currentUser = 'Login' }
+      // if (res) {
+      //   this.currentUser = res;
+      // } else { this.currentUser = 'Login' }
 
     })
   }

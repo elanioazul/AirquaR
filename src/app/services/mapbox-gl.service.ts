@@ -109,6 +109,15 @@ export class MapboxGLService {
     })
   }
 
+  addClickOnMeteostation(map) {
+    map.on('click', 'meteostationsLayer', (event) => {
+      new mapboxgl.Popup()
+        .setLngLat(event.features[0].geometry.coordinates)
+        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+        .addTo(map)
+    })
+  }
+
   toogleLayer(layerName, visible) {
     const mode = visible ? 'visible' : 'none';
     this.map.setLayoutProperty(layerName, 'visibility', mode);

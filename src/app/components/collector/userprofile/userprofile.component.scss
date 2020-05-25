@@ -1,0 +1,148 @@
+@import 'variables';
+.user-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 25vh;
+}
+.user {
+  margin: 4px 5px;
+  height: 100vh;
+
+  &-desc {
+      margin-left: 2rem;
+      & :nth-child(1) {
+          font-weight: bold;
+      }
+      & :nth-child(2) {
+          font-size: 0.8rem;
+      }
+
+  }
+  &-avatar {
+      border-radius: 50%;
+
+      margin: auto;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: $primary-sft2;
+      overflow: hidden;
+      box-shadow: 10px 10px 30px $grey-dark;
+
+      &__img {
+          display: block;
+          margin: auto;
+          width: 80%;
+          height: auto;
+      }
+  }
+
+
+}
+
+
+.user-details {
+  border: 1px solid $primary;
+  border-radius: 5px;
+  margin: 4px 5px;
+  height: 60vh;
+
+
+  &__username {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $primary;
+      height: 25%;
+
+      & .field {
+          font-weight: bold;
+          font-size: 1.1rem;
+      }
+
+      & .data {
+          font-family: $font-secondary;
+      }
+
+      & :nth-child(1) {
+          padding-left: 1rem;
+      }
+      & :nth-child(2) {
+          padding-right: 1rem;
+      }
+  }
+  &__initials {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $primary;
+      height: 25%;
+
+
+      & .field {
+          font-weight: bold;
+          font-size: 1.1rem;
+      }
+
+      & .data {
+          font-family: $font-secondary;
+      }
+
+      & :nth-child(1) {
+          padding-left: 1rem;
+      }
+      & :nth-child(2) {
+          padding-right: 1rem;
+      }
+  }
+  &__email {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $primary;
+      height: 25%;
+
+      & .field {
+          font-weight: bold;
+          font-size: 1.1rem;
+      }
+
+      & .data {
+          font-family: $font-secondary;
+      }
+
+      & :nth-child(1) {
+          padding-left: 1rem;
+      }
+      & :nth-child(2) {
+          padding-right: 1rem;
+      }
+  }
+  &__password {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 25%;
+
+      & .field {
+          font-weight: bold;
+          font-size: 1.1rem;
+      }
+
+      & .data {
+          font-family: $font-secondary;
+      }
+
+      & :nth-child(1) {
+          padding-left: 1rem;
+      }
+      & :nth-child(2) {
+          padding-right: 1rem;
+      }
+  }
+}

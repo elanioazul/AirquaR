@@ -1,0 +1,77 @@
+@import 'variables';
+
+.table-points {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+
+  .table__title {
+      padding-top: 0.5rem;
+      padding-right: 0.2rem;
+      height: 2.5rem;
+      width: 100%;
+      color: #fff;
+      background-color: $grey2-light;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #fff;
+      font-weight: lighter;
+      font-size: 1.3rem;
+      text-align: right;
+
+  }
+
+  .table__row {
+      color: #fff;
+      border: 1px solid white;
+      background-color: $primary-sft2;
+      height: 3rem;
+      width: 100%;
+      text-align: left;
+      font-weight: 700;
+
+      &--points {
+          height: 1.5rem;
+          font-weight: lighter;
+          font-size: 0.9rem;
+      }
+  }
+
+  .table__cel {
+      color: #fff;
+      padding-left: 0.1rem;
+      text-align: left;
+      vertical-align: middle;
+      &--points {
+          text-align: left;
+          padding-left: 0.1rem;
+          vertical-align: middle;
+          color: #000;
+
+
+          max-width: 55px;
+          padding-bottom: 1rem;
+          padding-top: 1rem;
+      }
+      &--icon {
+          text-align: left;
+          padding-left: 0.1rem;
+          vertical-align: middle;
+          color: #000;
+
+
+          max-width: 55px;
+          padding-bottom: 1rem;
+          padding-top: 1rem;
+      }
+  }
+}
+
+
+td:nth-child(5) {
+  padding-left: 0.6rem;
+  padding-right: 0.4rem;
+}
+td:nth-child(6) {
+  padding-right: 0.4rem;
+}
+
+

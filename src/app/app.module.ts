@@ -18,6 +18,9 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { PopupSmComponent } from './components/madrid/popup-sm/popup-sm.component';
 import { PopupBigComponent } from './components/madrid/popup-big/popup-big.component';
+import { UserprofileComponent } from './components/collector/userprofile/userprofile.component';
+import { MarkersListComponent } from './components/collector/markers-list/markers-list.component';
+import { CollectorFormComponent } from './components/collector/collector-form/collector-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { PopupBigComponent } from './components/madrid/popup-big/popup-big.compo
     PageNotFoundComponent,
     PopupSmComponent,
     PopupBigComponent,
+    UserprofileComponent,
+    MarkersListComponent,
+    CollectorFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +47,10 @@ import { PopupBigComponent } from './components/madrid/popup-big/popup-big.compo
     AppRoutingModule
   ],
   providers: [StationsDataService, MapboxGLService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    PopupSmComponent,
+    PopupBigComponent
+  ]
 })
 export class AppModule { }
