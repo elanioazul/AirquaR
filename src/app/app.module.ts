@@ -21,6 +21,7 @@ import { PopupBigComponent } from './components/madrid/popup-big/popup-big.compo
 import { UserprofileComponent } from './components/collector/userprofile/userprofile.component';
 import { MarkersListComponent } from './components/collector/markers-list/markers-list.component';
 import { CollectorFormComponent } from './components/collector/collector-form/collector-form.component';
+import { ModalComponent } from './components/shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CollectorFormComponent } from './components/collector/collector-form/co
     UserprofileComponent,
     MarkersListComponent,
     CollectorFormComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

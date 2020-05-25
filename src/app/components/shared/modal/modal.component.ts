@@ -1,17 +1,15 @@
-import { Component, OnInit,  Input, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter  } from '@angular/core';
 
 @Component({
-  selector: 'app-popup-sm',
-  templateUrl: './popup-sm.component.html',
-  styleUrls: ['./popup-sm.component.scss']
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss']
 })
-export class PopupSmComponent implements OnInit {
+export class ModalComponent implements OnInit {
 
   @Input() modalVisible: boolean = false;
 
   @Input() isFull: boolean = true;
-
-  @Input() title: string;
 
   @Input() modalId: string;
 
