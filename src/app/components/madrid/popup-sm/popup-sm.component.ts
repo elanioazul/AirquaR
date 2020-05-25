@@ -1,4 +1,5 @@
 import { Component, OnInit,  Input, ElementRef, Output, EventEmitter } from '@angular/core';
+import { StationsDataService } from '../../../services/stations-data.service';
 
 @Component({
   selector: 'app-popup-sm',
@@ -7,24 +8,26 @@ import { Component, OnInit,  Input, ElementRef, Output, EventEmitter } from '@an
 })
 export class PopupSmComponent implements OnInit {
 
-  @Input() modalVisible: boolean = false;
+  @Input() popupVisible: boolean = false;
 
-  @Input() isFull: boolean = true;
-
-  @Input() title: string;
-
-  @Input() modalId: string;
+  @Input() popupId: string;
 
   @Output() close = new EventEmitter();
 
-  constructor(private modal: ElementRef) { }
+  public stationDetails: Object;
+  public stationCoordinates: Object;
+
+
+  constructor(private popup: ElementRef, private stations: StationsDataService) { }
 
   ngOnInit(): void {
 
   }
 
+
+
   onClose(): void {
-    this.close.emit(this.modal);
+    this.close.emit(this.popup);
   }
 
 }

@@ -1,0 +1,80 @@
+@import 'variables';
+
+
+.popup {
+  height: 45vh;
+  position: relative;
+  z-index: 100;
+  bottom: 50;
+  right: 0;
+  left: 0;
+  width: 100%;
+  border: 1px solid $grey-dark;
+  //opacity: 0;
+  //visibility: hidden;
+  transition: opacity 0.5s ease-in;
+  background-color: $primary-sft;
+  color: hsla(0, 0, 0, 0.9);
+}
+.popup--show {
+  opacity: 1;
+  visibility: visible;
+
+}
+
+
+
+.popup__details {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  padding: 8px 6px;
+  color: $secondary;
+
+  &-name {
+      padding-bottom: 10px;
+  }
+}
+
+.popup__coord {
+  position: absolute;
+  top: 47%;
+  left: 5%;
+  padding: 8px 6px;
+  color: $secondary;
+
+  &-detail {
+      padding-bottom: 10px;
+  }
+}
+
+.popup__list {
+  position: absolute;
+  top: 22%;
+  left: 60%;
+  padding: 8px 6px;
+  width: 30%;
+  height: 50%;
+  text-align: right;
+  color: $secondary;
+  font-style: italic;
+  font-size: 0.9rem;
+
+  &-li {
+      padding: 3px;
+  }
+
+  &-li::before {
+      content: "✅";
+      padding-right: 10px;
+
+  }
+}
+
+.btn-access {
+  position: absolute;
+  top: 84%;
+  left: 30%;
+  color: $primary-sft;
+  background-color: $secondary;
+}

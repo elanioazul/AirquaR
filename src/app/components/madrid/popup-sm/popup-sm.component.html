@@ -1,6 +1,5 @@
-<div class="popup popup--show" #modal class="modal" [id]="modalId">
-  <button type="button" class="btn btn--close popup__close" (click)="onClose()">&times;</button>
-  <div [class.modal__container--full]="isFull">
+<div class="popup popup--show" #popup [id]="popupId">
+  <button type="button" class="btn btn--close" (click)="onClose()">&times;</button>
     <div class="popup__details">
       <h1 class="popup__details-name">Station name</h1>
       <h2 class="popup__details-address">Address</h2>
@@ -20,6 +19,6 @@
       <li class="popup__list-li">btx</li>
       <li class="popup__list-li">hc</li>
     </ul>
-  </div>
+
   <button class="btn btn-access" type="submit">Access to data</button>
 </div>

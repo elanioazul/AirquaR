@@ -16,12 +16,9 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { SignupComponent } from './components/shared/signup/signup.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { PopupSmComponent } from './components/madrid/popup-sm/popup-sm.component';
-import { PopupBigComponent } from './components/madrid/popup-big/popup-big.component';
 import { UserprofileComponent } from './components/collector/userprofile/userprofile.component';
 import { MarkersListComponent } from './components/collector/markers-list/markers-list.component';
 import { CollectorFormComponent } from './components/collector/collector-form/collector-form.component';
-import { ModalComponent } from './components/shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +31,9 @@ import { ModalComponent } from './components/shared/modal/modal.component';
     SignupComponent,
     HomeComponent,
     PageNotFoundComponent,
-    PopupSmComponent,
-    PopupBigComponent,
     UserprofileComponent,
     MarkersListComponent,
-    CollectorFormComponent,
-    ModalComponent
+    CollectorFormComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +44,6 @@ import { ModalComponent } from './components/shared/modal/modal.component';
   ],
   providers: [StationsDataService, MapboxGLService],
   bootstrap: [AppComponent],
-  entryComponents: [
-    PopupSmComponent,
-    PopupBigComponent
-  ]
+  entryComponents: []
 })
 export class AppModule { }

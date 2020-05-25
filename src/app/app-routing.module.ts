@@ -11,17 +11,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
-    path: 'home',
-    component: HomeComponent,
-    children: [
-      {
-        path: '',
-        children: [
-          { path: 'popup-sm', component: PopupSmComponent },
-          { path: 'popup-big', component: PopupBigComponent }
-        ]
-      }
-    ]
+    path: 'home', component: HomeComponent
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
