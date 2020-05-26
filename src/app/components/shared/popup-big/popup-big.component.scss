@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 86vh;
   width: 100%;
   border: 1px solid $grey-dark;
@@ -19,7 +20,7 @@
   background-repeat: no-repeat;
   height: 40vh;
   width: 100%;
-
+  margin-top: 80px;
 }
 
 .popup__control {
@@ -33,7 +34,7 @@
   }
 
   &-title {
-
+    display: inline-block;
   }
   &-parameter {
 
@@ -41,5 +42,13 @@
   &-date {
 
   }
+  &-station {
+
+  }
+}
+
+.popup__action {
+  border: none;
+  width: 50%;
 }
 

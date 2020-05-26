@@ -7,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupBigComponent implements OnInit {
 
-  public sortOfInfo: any;
+
   constructor() { }
 
   ngOnInit(): void {
-    this.sortOfInfo = 'Meteo info'
   }
 
 }
