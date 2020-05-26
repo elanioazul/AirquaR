@@ -19,6 +19,8 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 import { UserprofileComponent } from './components/collector/userprofile/userprofile.component';
 import { MarkersListComponent } from './components/collector/markers-list/markers-list.component';
 import { CollectorFormComponent } from './components/collector/collector-form/collector-form.component';
+import { PopupComponent } from './components/shared/popup/popup.component';
+import { PopupBigComponent } from './components/shared/popup-big/popup-big.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { CollectorFormComponent } from './components/collector/collector-form/co
     PageNotFoundComponent,
     UserprofileComponent,
     MarkersListComponent,
-    CollectorFormComponent
+    CollectorFormComponent,
+    PopupComponent,
+    PopupBigComponent
   ],
   imports: [
     BrowserModule,

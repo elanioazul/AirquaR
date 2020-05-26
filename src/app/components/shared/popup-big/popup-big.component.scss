@@ -1,0 +1,45 @@
+@import 'variables';
+
+.popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 86vh;
+  width: 100%;
+  border: 1px solid $grey-dark;
+  background-color: $primary-sft;
+  font-size: 0.8rem;
+  font-family: $font-primary;
+}
+
+.img {
+  background-image: url(../../../../assets/img/chart-example.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 40vh;
+  width: 100%;
+
+}
+
+.popup__control {
+  display: flex;
+  flex-direction: column;
+
+  &--secondary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &-title {
+
+  }
+  &-parameter {
+
+  }
+  &-date {
+
+  }
+}
+

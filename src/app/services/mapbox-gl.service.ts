@@ -53,6 +53,7 @@ export class MapboxGLService {
       this.stations.getMeteoStations().subscribe(data => {
         this.addSource(this.map, 'meteostations', data);
         this.addMeteostationsLayer(this.map);
+        this.addClickOnMeteostation(this.map);
       })
     })
     return this.map;
