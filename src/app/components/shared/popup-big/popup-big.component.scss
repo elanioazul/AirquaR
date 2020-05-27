@@ -1,5 +1,7 @@
 @import 'variables';
 @import 'rem';
+
+
 .popup {
   position: relative;
   display: flex;
@@ -11,6 +13,14 @@
   border: 1px solid $grey-dark;
   background-color: $primary-sft;
   font-family: $font-primary;
+
+  &__title {
+    display: inline-block;
+    font-size: 1rem;
+    color: $secondary;
+    padding-top: 30px;
+    margin-left: -190px;
+  }
 }
 
 .img {
@@ -23,28 +33,21 @@
 }
 
 .popup__upcontrol {
-  border: 1px solid salmon;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
-  margin-top: 30px;
   width: 95%;
 
-  &-title {
-    display: inline-block;
-    font-size: 1rem;
-    color: $secondary;
-  }
+
   &-parameter {
     width: 40vw;
-    margin: 15px 0px 5px 50px;
     height: 30px;
     border-radius: (4px);
     border: none;
 
   }
   &-date {
-    margin: 5px 0px 5px 50px;
     width: 40vw;
     height: 30px;
     border-radius: (4px);
@@ -58,7 +61,6 @@
   background-color: $success;
   width: 40%;
   height: rem(30px);
-  margin: 5px 0px 5px 50px;
   font-weight: 500;
   font-size: rem(17px);
   font-family: $font-primary;
@@ -67,7 +69,6 @@
 }
 
 .popup__downcontrol {
-  border: 1px solid greenyellow;
   display: flex;
   flex-direction: column;
   align-items: center;

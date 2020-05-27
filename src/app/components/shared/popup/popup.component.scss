@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'rem';
 
 .popup {
   position: relative;
@@ -67,9 +68,16 @@
 .btn-access {
   position: absolute;
   top: 84%;
-  left: 30%;
-  color: $primary-sft;
-  background-color: $secondary;
+  left: 25%;
+
+  color: $secondary;
+  background-color: $success;
+  height: rem(30px);
+  font-weight: 500;
+  font-size: rem(17px);
+  font-family: $font-primary;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 
