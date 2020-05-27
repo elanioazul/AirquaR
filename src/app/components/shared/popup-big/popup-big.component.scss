@@ -1,16 +1,15 @@
 @import 'variables';
-
+@import 'rem';
 .popup {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 86vh;
   width: 100%;
   border: 1px solid $grey-dark;
   background-color: $primary-sft;
-  font-size: 0.8rem;
   font-family: $font-primary;
 }
 
@@ -19,36 +18,106 @@
   background-size: contain;
   background-repeat: no-repeat;
   height: 40vh;
-  width: 100%;
-  margin-top: 80px;
+  width: 95%;
+  border: 1px solid yellow;
 }
 
-.popup__control {
+.popup__upcontrol {
+  border: 1px solid salmon;
   display: flex;
   flex-direction: column;
-
-  &--secondary {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+  align-items: flex-start;
+  margin-top: 30px;
+  width: 95%;
 
   &-title {
     display: inline-block;
+    font-size: 1rem;
+    color: $secondary;
   }
   &-parameter {
+    width: 40vw;
+    margin: 15px 0px 5px 50px;
+    height: 30px;
+    border-radius: (4px);
+    border: none;
 
   }
   &-date {
+    margin: 5px 0px 5px 50px;
+    width: 40vw;
+    height: 30px;
+    border-radius: (4px);
+    border: none;
+  }
+}
 
+.popup__upaction {
+  display: block;
+  color: $secondary;
+  background-color: $success;
+  width: 40%;
+  height: rem(30px);
+  margin: 5px 0px 5px 50px;
+  font-weight: 500;
+  font-size: rem(17px);
+  font-family: $font-primary;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.popup__downcontrol {
+  border: 1px solid greenyellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  width: 95%;
+
+  &-title {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding-bottom: 8px;
+    text-align: center;
+    color: $secondary;
+  }
+  &-box {
+    display: flex;
+    flex-direction: row;
   }
   &-station {
+    margin-right: 20px;
+    width: 40vw;
+    height: 30px;
+    border-radius: (4px);
+    border: none;
 
   }
 }
 
-.popup__action {
-  border: none;
-  width: 50%;
+.popup__downaction {
+  display: inline-block;
+  color: $secondary;
+  background-color: $success;
+
+
+
+  height: rem(30px);
+  font-weight: 500;
+  font-size: rem(17px);
+  font-family: $font-primary;
+  text-transform: uppercase;
+  cursor: pointer;
+
 }
 
+
+@media screen and (min-width: 767px) {
+
+
+}
+
+@media screen and (min-width: 1024px) {
+
+
+}

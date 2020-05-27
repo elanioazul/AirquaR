@@ -1,8 +1,8 @@
 <div class="popup">
   <button type="button" class="btn btn--close popup__close">&times;</button>
-  <div class="popup__control">
-    <h1 class="popup__control-title">Station name</h1>
-    <select class="popup__control-parameter" name="parameter" id="parameter">
+  <div class="popup__upcontrol">
+    <h1 class="popup__upcontrol-title">Station name</h1>
+    <select class="popup__upcontrol-parameter" name="parameter" id="parameter">
       <option value="select" selected>select parameter</option>
       <option value="no2">no2</option>
       <option value="so2">so2</option>
@@ -13,16 +13,14 @@
       <option value="btx">btx</option>
       <option value="hc">hc</option>
     </select>
-    <input type="date" class="popup__control-date" placeholder="">
-    <button type="submit" class="popup__action">Show</button>
+    <input type="date" class="popup__upcontrol-date" placeholder="">
+    <button type="submit" class="popup__upaction btn">Show</button>
   </div>
   <div class="img"></div>
-  <div class="popup__control">
-    <div>
-      <h1 class="popup__control-title">Add another station</h1>
-    </div>
-    <div class="popup__control--secondary">
-      <select class="popup__control-station">
+  <div class="popup__downcontrol">
+    <h1 class="popup__downcontrol-title">Add another station</h1>
+    <div class="popup__downontrol-box">
+      <select class="popup__downcontrol-station">
         <option value="select" selected>station</option>
         <option value="Pza. España">Pza. España</option>
         <option value="Escuelas Aguirre">Escuelas Aguirre</option>
@@ -49,8 +47,7 @@
         <option value="Urb. Embajada">Urb. Embajada</option>
         <option value="Ensanche Vallecas">Ensanche Vallecas</option>
       </select>
-      <button type="submit" class="popup__action">Add</button>
+      <button type="submit" class="popup__downaction btn">Add</button>
     </div>
   </div>
-
 </div>
