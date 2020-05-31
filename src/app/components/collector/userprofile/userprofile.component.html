@@ -11,21 +11,22 @@
   <div class="user-details">
       <div class="user-details__username">
           <div class="field">Username</div>
-          <div class="data">data</div>
-      </div>
-      <div class="user-details__initials">
-          <div class="field">Initials</div>
-          <div class="data">data</div>
+          <input class="form__control" type="text" name="name" id="name" placeholder="username">
       </div>
       <div class="user-details__email">
           <div class="field">Email</div>
-          <div class="data">data</div>
+          <input class="form__control" type="text" name="email" id="email" placeholder="email">
       </div>
       <div class="user-details__password">
           <div class="field">Password</div>
-          <div class="data">data</div>
+          <input class="form__control" type="password" name="password" id="password">
       </div>
-
+      <div class="user-details__confirmpassword">
+        <div class="field">Confirm password</div>
+        <input class="form__control" type="password" name="confirmpassword" id="confirmpassword">
+      </div>
   </div>
-
+  <div class="form__actions">
+    <button type="submit" class="btn btn__update">update account</button>
+  </div>
 </div>

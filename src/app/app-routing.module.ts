@@ -4,12 +4,14 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { SignupComponent } from './components/shared/signup/signup.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { PopupSmComponent } from './components/madrid/popup-sm/popup-sm.component';
-import { PopupBigComponent } from './components/madrid/popup-big/popup-big.component';
+import { UserprofileComponent } from './components/collector/userprofile/userprofile.component';
+import { MarkersListComponent } from './components/collector/markers-list/markers-list.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'userprofile', component: UserprofileComponent },
+  { path: 'usermarkers', component: MarkersListComponent},
   {
     path: 'home', component: HomeComponent
   },
