@@ -21,6 +21,7 @@ import { MarkersListComponent } from './components/collector/markers-list/marker
 import { CollectorFormComponent } from './components/collector/collector-form/collector-form.component';
 import { PopupComponent } from './components/shared/popup/popup.component';
 import { PopupBigComponent } from './components/shared/popup-big/popup-big.component';
+import { UserhomeComponent } from './components/collector/userhome/userhome.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PopupBigComponent } from './components/shared/popup-big/popup-big.compo
     MarkersListComponent,
     CollectorFormComponent,
     PopupComponent,
-    PopupBigComponent
+    PopupBigComponent,
+    UserhomeComponent
   ],
   imports: [
     BrowserModule,

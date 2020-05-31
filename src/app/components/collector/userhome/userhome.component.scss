@@ -1,0 +1,67 @@
+@import 'variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: 700;
+    color: $primary-sft2;
+
+  }
+  &__subtitle {
+    font-size: 40px;
+    color: $primary;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 50px;
+
+  &__link {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 50px;
+    color: $primary;
+
+    &-icon {
+      height: 50px;
+      width: 70px;
+    }
+  }
+}
+
+.user-avatar {
+  display: inline-block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $primary-sft2;
+  overflow: hidden;
+  box-shadow: 10px 10px 30px $grey-dark;
+  margin-left: 10px;
+
+  &__img {
+    display: block;
+    margin: auto;
+    width: 80%;
+    height: auto;
+  }
+}
+

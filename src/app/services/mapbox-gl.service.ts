@@ -4,7 +4,6 @@ import * as mapboxgl from 'mapbox-gl';
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
 import { Subscription, Observable, from, empty } from 'rxjs';
-import { PopupSmComponent } from '../components/madrid/popup-sm/popup-sm.component'
 
 @Injectable({
   providedIn: 'root'
