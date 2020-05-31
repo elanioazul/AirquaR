@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   submit(form) {
     this.auth.login(form).subscribe(
       (res) => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/userhome'])
       }, (error) => {
         this.showErrorMessage = error.error
       }

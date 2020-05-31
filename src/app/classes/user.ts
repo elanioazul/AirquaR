@@ -1,5 +1,8 @@
-export interface Register {
-  username: String;
-  email: String;
-  password: String;
+export interface User {
+  id: String,
+  username: String,
+  email: String,
+  provider: String,
+  initials: String,
+  password: String
 }

@@ -6,7 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, Form } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { Register } from '../classes/user';
+import { Register } from '../classes/register';
 
 @Injectable({
   providedIn: 'root'
