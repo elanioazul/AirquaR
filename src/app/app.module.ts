@@ -50,6 +50,6 @@ import { UserhomeComponent } from './components/collector/userhome/userhome.comp
   ],
   providers: [StationsDataService, MapboxGLService],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [PopupComponent, PopupBigComponent]
 })
 export class AppModule { }

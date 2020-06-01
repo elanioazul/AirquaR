@@ -12,10 +12,16 @@ export class UsersService {
 
   private url = `${environment.airquaAPI}api/v1/users`;
 
+  public currentUser: string;
+
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<any> {
-    return this.http.get(this.url)
+  getLoggedUser(currentUser): Observable<User> {
+    return this.http.get<User>(`${this.url}/${currentUser}`);
   }
+
+  //getUsers(): Observable<any> {
+  //  return this.http.get(this.url)
+  //}
 
 }
