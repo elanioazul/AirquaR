@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StationsDataService } from '../../../services/stations-data.service';
 
 @Component({
   selector: 'app-popup',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupComponent implements OnInit {
 
-  constructor() { }
+  public model: any; // Model Property
+
+  constructor(private stations: StationsDataService) { }
 
   ngOnInit(): void {
   }

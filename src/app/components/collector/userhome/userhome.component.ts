@@ -23,7 +23,6 @@ export class UserhomeComponent implements OnInit {
     //const res = JSON.parse(this.storage.get('user'))
     //this.userName = res.username;
     this.currentUser = this.storage.get('userId')
-    debugger
     this.usersService.getLoggedUser(this.currentUser).subscribe((res) => {
       if (res) {
         this.currentUser = res[0].username;

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 import { StationsDataService } from './stations-data.service';
-import { map, tap } from 'rxjs/operators';
 import { Subscription, Observable, from, empty } from 'rxjs';
+
+import { PopupComponent } from '../components/shared/popup/popup.component';
+import { DynamicComponentService } from './dynamic-component.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +30,10 @@ export class MapboxGLService {
 
 
 
-  constructor(private stations: StationsDataService) {
+  constructor(
+    private stations: StationsDataService,
+    private dynamic: DynamicComponentService
+    ) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
   }
 
@@ -102,10 +107,12 @@ export class MapboxGLService {
   }
 
   addClickOnAirstation(map) {
+    let popupContent = this.dynamic.injectComponent(PopupComponent)
     map.on('click', 'airstationsLayer', (event) => {
       new mapboxgl.Popup()
         .setLngLat(event.features[0].geometry.coordinates)
-        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+        //.setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+        .setDOMContent(popupContent)
         .addTo(map)
     })
   }
@@ -114,7 +121,7 @@ export class MapboxGLService {
     map.on('click', 'meteostationsLayer', (event) => {
       new mapboxgl.Popup()
         .setLngLat(event.features[0].geometry.coordinates)
-        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+        //.setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
         .addTo(map)
     })
   }
