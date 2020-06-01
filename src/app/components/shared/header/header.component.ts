@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../classes/user';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,20 +14,23 @@ import { User } from '../../../classes/user';
 })
 export class HeaderComponent implements OnInit {
 
-  public currentUser = 'Login';
-  //public currentUser: User;
+  public currentUser: any;
 
   constructor(
-    //@Inject(LOCAL_STORAGE)
+    @Inject(LOCAL_STORAGE)
+    private storage: StorageService,
     private usersService: UsersService,
     private activedRouter: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    debugger
+    this.currentUser = this.storage.get('userId')
+    debugger
     this.usersService.getLoggedUser(this.currentUser).subscribe((res) => {
      if (res) {
-       //this.currentUser = res;
+       this.currentUser = res[0].username;
      } else { this.currentUser = 'Login' }
     });
   }

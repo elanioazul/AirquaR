@@ -15,6 +15,7 @@ export class AuthService {
 
   url: string = `${environment.airquaAPI}api/v1/users`;
 
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -32,8 +33,9 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/auth/signin`, form.value, this.httpOptions).pipe(
       tap(response => {
         debugger
-        this.storage.set('airquatoken', response.data.token)}
-      )
+        this.storage.set('airquatoken', response.data.token)
+        this.storage.set('userId', response.data.id)
+      })
     );
   }
 
