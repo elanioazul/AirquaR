@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StorageService,LOCAL_STORAGE } from 'ngx-webstorage-service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-userhome',
@@ -9,17 +10,25 @@ import { StorageService,LOCAL_STORAGE } from 'ngx-webstorage-service';
 })
 export class UserhomeComponent implements OnInit {
 
-  userName: any;
+  public currentUser: any;
 
   constructor(
     @Inject(LOCAL_STORAGE)
     private storage: StorageService,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
-    this.userName = this.storage.get('user');
+    //this.currentUser = this.storage.get('userId');
     //const res = JSON.parse(this.storage.get('user'))
     //this.userName = res.username;
+    this.currentUser = this.storage.get('userId')
+    debugger
+    this.usersService.getLoggedUser(this.currentUser).subscribe((res) => {
+      if (res) {
+        this.currentUser = res[0].username;
+      }
+     });
   }
 
 }
