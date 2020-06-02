@@ -2,7 +2,7 @@
 @import 'rem';
 
 .popup {
-  z-index: 500;
+  z-index: 1500;
   position: absolute;
   top: 50%;
   bottom: 0;
@@ -13,7 +13,7 @@
   border: 1px solid $grey-dark;
   //opacity: 0;
   //visibility: hidden;
-  transition: opacity 0.5s ease-in;
+  //transition: opacity 0.5s ease-in;
   background-color: $primary-sft;
 }
 // .popup--show {
