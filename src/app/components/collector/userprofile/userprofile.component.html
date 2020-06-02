@@ -9,25 +9,25 @@
           <img class="user-avatar__img" src="../../../../assets/icons/login-w-icon.png" alt="Avatar">
       </div>
   </div>
-  <div class="user-details">
+  <form class="user-details" [formGroup]="formEditProfile" (ngSubmit)="submit(formEditProfile)">
       <div class="user-details__username">
-          <div class="field">Username</div>
+          <label class="field">Username</label>
           <input class="form__control" type="text" name="name" id="name" placeholder="username">
       </div>
       <div class="user-details__email">
-          <div class="field">Email</div>
+          <label class="field">Email</label>
           <input class="form__control" type="text" name="email" id="email" placeholder="email">
       </div>
       <div class="user-details__password">
-          <div class="field">Password</div>
+          <label class="field">New password</label>
           <input class="form__control" type="password" name="password" id="password">
       </div>
       <div class="user-details__confirmpassword">
-        <div class="field">Confirm password</div>
+        <label class="field">Confirm password</label>
         <input class="form__control" type="password" name="confirmpassword" id="confirmpassword">
       </div>
-  </div>
+    </form>
   <div class="form__actions">
-    <button type="submit" class="btn btn__update">update account</button>
+    <button type="submit" class="btn btn__update" [disabled]="formEditProfile.invalid">update account</button>
   </div>
 </div>
