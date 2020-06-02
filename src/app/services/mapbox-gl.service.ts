@@ -111,11 +111,14 @@ export class MapboxGLService {
   addClickOnAirstation(map) {
     map.on('click', 'airstationsLayer', (event) => {
       let dialogRef = this.dialog.open(PopupComponent, {panelClass: 'custom-dialog-container'})
-      // new mapboxgl.Popup()
-      //   .setLngLat(event.features[0].geometry.coordinates)
-      //   //.setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
-      //   .setDOMContent(dialogRef)
-      //   .addTo(map)
+      dialogRef.afterClosed().subscribe(() => {
+        console.log(event)
+      })
+    //   new mapboxgl.Popup()
+    //     .setLngLat(event.features[0].geometry.coordinates)
+    //     .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+    //     //.setDOMContent(dialogRef)
+    //     .addTo(map)
     })
   }
 
