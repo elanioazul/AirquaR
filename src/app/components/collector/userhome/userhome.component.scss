@@ -22,7 +22,9 @@
   }
   &__subtitle {
     font-size: 40px;
+    font-weight: bold;
     color: $primary;
+    text-transform: uppercase;
   }
 }
 

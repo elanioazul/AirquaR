@@ -22,7 +22,9 @@ import { CollectorFormComponent } from './components/collector/collector-form/co
 import { PopupComponent } from './components/shared/popup/popup.component';
 import { PopupBigComponent } from './components/shared/popup-big/popup-big.component';
 import { UserhomeComponent } from './components/collector/userhome/userhome.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [StationsDataService, MapboxGLService],
   bootstrap: [AppComponent],

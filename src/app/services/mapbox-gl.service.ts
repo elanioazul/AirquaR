@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
 import { Subscription, Observable, from, empty } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PopupComponent } from '../components/shared/popup/popup.component';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +29,13 @@ export class MapboxGLService {
 
   private subscriptions: Subscription[] = [];
 
+  public dialogRef;
 
-
-  constructor(private stations: StationsDataService) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialog: MatDialog,
+    private stations: StationsDataService
+    ) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
   }
 
@@ -103,10 +110,12 @@ export class MapboxGLService {
 
   addClickOnAirstation(map) {
     map.on('click', 'airstationsLayer', (event) => {
-      new mapboxgl.Popup()
-        .setLngLat(event.features[0].geometry.coordinates)
-        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
-        .addTo(map)
+      let dialogRef = this.dialog.open(PopupComponent, {panelClass: 'custom-dialog-container'})
+      // new mapboxgl.Popup()
+      //   .setLngLat(event.features[0].geometry.coordinates)
+      //   //.setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
+      //   .setDOMContent(dialogRef)
+      //   .addTo(map)
     })
   }
 

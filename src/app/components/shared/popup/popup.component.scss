@@ -1,6 +1,18 @@
 @import 'variables';
 @import 'rem';
 
+.custom-dialog-container .mat-dialog-container {
+  position: relative;
+  padding: 0;
+  height: 247px;
+  width: 492px;
+  overflow: hidden;
+  border-radius: 1px;
+
+}
+
+
+
 .popup {
   position: relative;
   margin-top: 43vh;
