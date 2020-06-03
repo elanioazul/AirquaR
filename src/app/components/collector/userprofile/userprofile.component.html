@@ -12,19 +12,27 @@
   <form class="user-details" [formGroup]="formEditProfile" (ngSubmit)="submit(formEditProfile)">
       <div class="user-details__username">
           <label class="field">Username</label>
-          <input class="form__control" type="text" name="name" id="name" placeholder="username">
+          <input class="form__control" type="text" name="name" id="name"
+          [ngClass]="{'input-error': userNameHasError(formEditProfile) }"
+          formControlName="username" minlength="4">
       </div>
       <div class="user-details__email">
           <label class="field">Email</label>
-          <input class="form__control" type="text" name="email" id="email" placeholder="email">
+          <input class="form__control" type="text" name="email" id="email"
+          [ngClass]="{'input-error': emailHasError(formEditProfile) }"
+          formControlName="email">
       </div>
       <div class="user-details__password">
           <label class="field">New password</label>
-          <input class="form__control" type="password" name="password" id="password">
+          <input class="form__control" type="password" name="password" id="password"
+          [ngClass]="{'input-error': passwordHasError(formEditProfile.controls.newPassword) }"
+          formControlName="newPassword">
       </div>
       <div class="user-details__confirmpassword">
         <label class="field">Confirm password</label>
-        <input class="form__control" type="password" name="confirmpassword" id="confirmpassword">
+        <input class="form__control" type="password" name="confirmpassword" id="confirmpassword"
+        [ngClass]="{'input-error': confirmPasswordHasError(formEditProfile.controls.confirmPassword) }"
+        formControlName="confirmPassword">
       </div>
     </form>
   <div class="form__actions">

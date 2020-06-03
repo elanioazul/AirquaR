@@ -25,9 +25,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    debugger
     this.currentUser = this.storage.get('userId')
-    debugger
     this.usersService.getLoggedUser(this.currentUser).subscribe((res) => {
      if (res) {
        this.currentUser = res[0].username;

@@ -13,8 +13,7 @@ export class UserhomeComponent implements OnInit {
   public currentUser: any;
 
   constructor(
-    @Inject(LOCAL_STORAGE)
-    private storage: StorageService,
+    @Inject(LOCAL_STORAGE) private storage: StorageService,
     private usersService: UsersService
   ) { }
 
@@ -23,10 +22,11 @@ export class UserhomeComponent implements OnInit {
     //const res = JSON.parse(this.storage.get('user'))
     //this.userName = res.username;
     this.currentUser = this.storage.get('userId')
-    debugger
     this.usersService.getLoggedUser(this.currentUser).subscribe((res) => {
+      debugger
       if (res) {
         this.currentUser = res[0].username;
+        this.storage.set('user', res[0]);
       }
      });
   }
