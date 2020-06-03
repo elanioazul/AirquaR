@@ -32,7 +32,6 @@ export class MapboxGLService {
   public dialogRef;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
     private stations: StationsDataService
     ) {
