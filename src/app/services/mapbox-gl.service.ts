@@ -109,7 +109,7 @@ export class MapboxGLService {
 
   addClickOnAirstation(map) {
     map.on('click', 'airstationsLayer', (event) => {
-      let dialogRef = this.dialog.open(PopupComponent, {panelClass: 'custom-dialog-container'})
+      let dialogRef = this.dialog.open(PopupComponent)
       dialogRef.afterClosed().subscribe(() => {
         console.log(event)
       })
