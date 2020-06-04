@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
 import { Subscription, Observable, from, empty } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PopupComponent } from '../components/shared/popup/popup.component';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +29,15 @@ export class MapboxGLService {
 
   private subscriptions: Subscription[] = [];
 
+  public dialogRef;
 
+  public airStationClicked: any;
+  public meteoStationClicked: any;
 
-  constructor(private stations: StationsDataService) {
+  constructor(
+    public dialog: MatDialog,
+    private stations: StationsDataService
+    ) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
   }
 
@@ -47,12 +56,11 @@ export class MapboxGLService {
       this.stations.getAirStations().subscribe(data => {
         this.addSource(this.map, 'airstations', data);
         this.addAirstationsLayer(this.map);
-        this.addClickOnAirstation(this.map);
+        this.addClick(this.map);
       })
       this.stations.getMeteoStations().subscribe(data => {
         this.addSource(this.map, 'meteostations', data);
         this.addMeteostationsLayer(this.map);
-        this.addClickOnMeteostation(this.map);
       })
     })
     return this.map;
@@ -101,21 +109,11 @@ export class MapboxGLService {
     });
   }
 
-  addClickOnAirstation(map) {
-    map.on('click', 'airstationsLayer', (event) => {
-      new mapboxgl.Popup()
-        .setLngLat(event.features[0].geometry.coordinates)
-        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
-        .addTo(map)
-    })
-  }
-
-  addClickOnMeteostation(map) {
-    map.on('click', 'meteostationsLayer', (event) => {
-      new mapboxgl.Popup()
-        .setLngLat(event.features[0].geometry.coordinates)
-        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
-        .addTo(map)
+  addClick(map) {
+    map.on('click', (e) => {
+      const features = map.queryRenderedFeatures(e.point, { layers: ['airstationsLayer', 'meteostationsLayer']});
+      console.log(features)
+      let dialogRef = this.dialog.open(PopupComponent)
     })
   }
 
