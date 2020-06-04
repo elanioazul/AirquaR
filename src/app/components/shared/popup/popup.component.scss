@@ -1,31 +1,19 @@
 @import 'variables';
 @import 'rem';
 
-// .custom-dialog-container .mat-dialog-container .cdk-overlay-container {
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   top: 46vh;
-//   // padding: 0;
-//   // height: 46vh;
-//   // width: 100vw;
-//   overflow: hidden;
-//   border-radius: 1px;
-
-// }
-
-
 
 .popup {
-  position: relative;
-  margin-top: 43vh;
-  height: 43vh;
-  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 46vh;
+
   border: 1px solid $grey-dark;
   //opacity: 0;
   //visibility: hidden;
-  transition: opacity 0.5s ease-in;
+  //transition: height 2s ease-in;
   background-color: $primary-sft;
 }
 .popup--show {

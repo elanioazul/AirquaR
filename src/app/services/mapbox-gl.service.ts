@@ -31,6 +31,9 @@ export class MapboxGLService {
 
   public dialogRef;
 
+  public airStationClicked: any;
+  public meteoStationClicked: any;
+
   constructor(
     public dialog: MatDialog,
     private stations: StationsDataService
@@ -53,12 +56,11 @@ export class MapboxGLService {
       this.stations.getAirStations().subscribe(data => {
         this.addSource(this.map, 'airstations', data);
         this.addAirstationsLayer(this.map);
-        this.addClickOnAirstation(this.map);
+        this.addClick(this.map);
       })
       this.stations.getMeteoStations().subscribe(data => {
         this.addSource(this.map, 'meteostations', data);
         this.addMeteostationsLayer(this.map);
-        this.addClickOnMeteostation(this.map);
       })
     })
     return this.map;
@@ -107,26 +109,11 @@ export class MapboxGLService {
     });
   }
 
-  addClickOnAirstation(map) {
-    map.on('click', 'airstationsLayer', (event) => {
+  addClick(map) {
+    map.on('click', (e) => {
+      const features = map.queryRenderedFeatures(e.point, { layers: ['airstationsLayer', 'meteostationsLayer']});
+      console.log(features)
       let dialogRef = this.dialog.open(PopupComponent)
-      dialogRef.afterClosed().subscribe(() => {
-        console.log(event)
-      })
-    //   new mapboxgl.Popup()
-    //     .setLngLat(event.features[0].geometry.coordinates)
-    //     .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
-    //     //.setDOMContent(dialogRef)
-    //     .addTo(map)
-    })
-  }
-
-  addClickOnMeteostation(map) {
-    map.on('click', 'meteostationsLayer', (event) => {
-      new mapboxgl.Popup()
-        .setLngLat(event.features[0].geometry.coordinates)
-        .setHTML(`<span class="tag">${event.features[0].properties.estacion}</span>`)
-        .addTo(map)
     })
   }
 
