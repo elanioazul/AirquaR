@@ -53,7 +53,11 @@ export class UserprofileComponent implements OnInit {
 
   submit(form) {
     debugger
-    const updatedUser = Object.assign({}, this.user, form.value)
+    const updatedUser = Object.assign({}, this.user, {
+      username: form.value.username,
+      email: form.value.email,
+      password: form.value.newPassword
+    })
     this.userService.updateUser(updatedUser).subscribe(
       () => {
         this.success = true;
