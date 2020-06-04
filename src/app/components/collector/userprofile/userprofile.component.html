@@ -2,7 +2,7 @@
 <div class="user">
   <div class="user-header">
       <div class="user-desc">
-          <div>Username</div>
+          <div>{{user.username}}</div>
           <div>My account</div>
       </div>
       <div class="user-avatar">
@@ -34,8 +34,8 @@
         [ngClass]="{'input-error': confirmPasswordHasError(formEditProfile.controls.confirmPassword) }"
         formControlName="confirmPassword">
       </div>
+      <div class="form__actions">
+        <button type="submit" class="btn btn__update" [disabled]="formEditProfile.invalid">update account</button>
+      </div>
     </form>
-  <div class="form__actions">
-    <button type="submit" class="btn btn__update" [disabled]="formEditProfile.invalid">update account</button>
-  </div>
 </div>

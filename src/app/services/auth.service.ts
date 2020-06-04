@@ -33,7 +33,8 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/auth/signin`, form.value, this.httpOptions).pipe(
       tap(response => {
         this.storage.set('airquatoken', response.data.token)
-        this.storage.set('userId', response.data.id)
+        this.storage.set('user', response)
+        //this.storage.set('userId', response.data.id)
         //this.storage.set('user', JSON.stringify(response))
         //JSON.parse(this.storage.get('user'))
       })

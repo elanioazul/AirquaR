@@ -18,17 +18,8 @@ export class UserhomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.currentUser = this.storage.get('userId');
-    //const res = JSON.parse(this.storage.get('user'))
-    //this.userName = res.username;
-    this.currentUser = this.storage.get('userId')
-    this.usersService.getLoggedUser(this.currentUser).subscribe((res) => {
-      debugger
-      if (res) {
-        this.currentUser = res[0].username;
-        this.storage.set('user', res[0]);
-      }
-     });
+    this.currentUser = this.storage.get('user');
+
   }
 
 }

@@ -27,8 +27,6 @@ export class UserprofileComponent implements OnInit {
 
   success = false;
 
-  private subscriptions: Subscription[] = [];
-
   constructor(
     @Inject(LOCAL_STORAGE)
     private storage: StorageService,
@@ -38,7 +36,9 @@ export class UserprofileComponent implements OnInit {
 
   ngOnInit(): void {
     this.error = null;
-    this.user = this.storage.get('user');
+    //debugger
+    this.user = this.storage.get('user').data;
+    debugger
     this.formEditProfile = this.fb.group({
       username: [this.user?.username || '', [Validators.required, Validators.minLength(4)]],
       email: [this.user?.email || '', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -53,13 +53,14 @@ export class UserprofileComponent implements OnInit {
 
   submit(form) {
     debugger
-    this.subscriptions.push(this.userService.updateUser(form.value).subscribe(
+    const updatedUser = Object.assign({}, this.user, form.value)
+    this.userService.updateUser(updatedUser).subscribe(
       () => {
         this.success = true;
       }, (error) => {
         console.log(error)
       }
-    ));
+    );
   }
 
   userNameHasError(form) {

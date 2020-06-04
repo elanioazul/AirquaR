@@ -38,12 +38,9 @@ export class UsersService {
   }
 
   updateUser(user: User): Observable<User> {
+    debugger
     return this.http.put<User>(`${this.url}/${user.id}`, user);
   }
 
-  // changePassword(user: User, password: string) {
-  //   user['password'] = password;
-  //   return this.updateUser(user);
-  // }
 
 }
