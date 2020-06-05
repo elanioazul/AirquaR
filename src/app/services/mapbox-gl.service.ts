@@ -31,6 +31,7 @@ export class MapboxGLService {
 
   public dialogRef;
 
+  public stationClicked: any;
   public airStationClicked: any;
   public meteoStationClicked: any;
 
@@ -112,7 +113,17 @@ export class MapboxGLService {
   addClick(map) {
     map.on('click', (e) => {
       const features = map.queryRenderedFeatures(e.point, { layers: ['airstationsLayer', 'meteostationsLayer']});
-      console.log(features)
+      //this.stationIdClicked = features[0].properties.codigo_cor;
+      //console.log(features)
+      if (features[0].layer.source === 'airstations') {
+        debugger
+        this.airStationClicked = features[0].properties.codigo_cor;
+      } if (features[0].layer.source === 'meteostations') {
+        debugger
+        this.meteoStationClicked = features[0].properties.codigo_cor;
+      }
+      console.log('meteo :' + this.meteoStationClicked)
+      console.log('air :' + this.airStationClicked)
       let dialogRef = this.dialog.open(PopupComponent)
     })
   }

@@ -1,7 +1,7 @@
-<div class="popup">
+<div class="popup" *ngFor="let item of data">
   <button type="button" class="btn btn--close popup__close" (click)="close()">&times;</button>
   <div class="popup__details">
-      <h1 class="popup__details-name">Station name</h1>
+      <h1 class="popup__details-name">{{item.estacion}}</h1>
       <h2 class="popup__details-address">Address</h2>
   </div>
   <div class="popup__coord">
