@@ -122,8 +122,6 @@ export class MapboxGLService {
         debugger
         this.meteoStationClicked = features[0].properties.codigo_cor;
       }
-      console.log('meteo :' + this.meteoStationClicked)
-      console.log('air :' + this.airStationClicked)
       let dialogRef = this.dialog.open(PopupComponent)
     })
   }

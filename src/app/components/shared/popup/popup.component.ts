@@ -23,7 +23,8 @@ export class PopupComponent implements OnInit {
     if (this.mapboxservice.meteoStationClicked === undefined) {
       debugger
       this.stationsService.getAirStationById(this.mapboxservice.airStationClicked).subscribe((res) => {
-        console.log('soy una res con info de Air :' + res)
+        this.data = res;
+        console.log('soy una res con info de Air :' + res[0])
       }, (error) => {
         console.log(error)
       })
@@ -32,7 +33,7 @@ export class PopupComponent implements OnInit {
       this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe((res) => {
         debugger
         this.data = res;
-        console.log('soy una res con info de Meteo :' + res)
+        console.log('soy una res con info de Meteo :' + res[0])
       })
     }
   }
