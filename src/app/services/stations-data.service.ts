@@ -33,12 +33,10 @@ export class StationsDataService {
   }
 
   getAirStationById(id): Observable<any> {
-    debugger
     return this.http.get(`${this.urlairStationId}/${id}`);
   }
 
   getMeteoStationById(id): Observable<any> {
-    debugger
     return this.http.get(`${this.urlmeteoStationId}/${id}`);
   }
 

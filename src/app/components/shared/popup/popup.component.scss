@@ -69,11 +69,17 @@
       text-transform: uppercase;
   }
 
-  &-li::before {
-      //content: "✅";
-      padding-right: 10px;
-
+  [data-foo]::before {
+    content: attr(data-foo) " ";
+    color: yellow;
+    font-size: 0.7rem;
   }
+
+  // &-li::before {
+  //     content: "✅";
+  //     padding-right: 10px;
+
+  // }
 }
 
 .btn-access {
