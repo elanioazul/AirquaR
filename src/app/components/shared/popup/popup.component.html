@@ -9,11 +9,24 @@
       <p class="popup__coord-detail">{{data.comun[4]}}</p>
       <p class="popup__coord-detail">Altitud: {{data.comun[2]}} msnm</p>
   </div>
-  <ul class="popup__list" *ngIf="data.air">
-      <li class="popup__list-li" *ngFor="let item of data.air"></li>
+  <ul class="popup__list" *ngIf="data.air?.length">
+    <li class="popup__list-li">no2: {{data.air[0]}}</li>
+    <li class="popup__list-li">so2: {{data.air[1]}}</li>
+    <li class="popup__list-li">co: {{data.air[2]}}</li>
+    <li class="popup__list-li">pm10: {{data.air[3]}}</li>
+    <li class="popup__list-li">pm2,5: {{data.air[4]}}</li>
+    <li class="popup__list-li">o3: {{data.air[5]}}</li>
+    <li class="popup__list-li">btx_ {{data.air[6]}}</li>
+    <li class="popup__list-li">hc: {{data.air[7]}}</li>
   </ul>
-  <ul class="popup__list" *ngIf="data.meteo">
-    <li class="popup__list-li" *ngFor="let item of data.meteo"></li>
-</ul>
+  <ul class="popup__list" *ngIf="data.meteo?.length">
+    <li class="popup__list-li">V.viento: {{data.meteo[0]}}</li>
+    <li class="popup__list-li">Dir.viento: {{data.meteo[1]}}</li>
+    <li class="popup__list-li">Tª: {{data.meteo[2]}}</li>
+    <li class="popup__list-li">Hum.rel: {{data.meteo[3]}}</li>
+    <li class="popup__list-li">Presión: {{data.meteo[4]}}</li>
+    <li class="popup__list-li">Rad.solar: {{data.meteo[5]}}</li>
+    <li class="popup__list-li">Precip: {{data.meteo[6]}}</li>
+  </ul>
   <button class="btn btn-access" type="submit">Access to data</button>
 </div>

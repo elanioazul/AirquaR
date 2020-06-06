@@ -43,17 +43,13 @@ export class PopupComponent implements OnInit {
         let o3 = res[0].o3;
         let btx = res[0].btx;
         let hc = res[0].hc;
-        debugger
         this.data.air.push(no2, so2, co, pm10, pm25, o3, btx, hc);
-        debugger
         console.log('soy una res con info de Air :' + res[0])
       }, (error) => {
         console.log(error)
       })
     } else {
-      debugger
       this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe((res) => {
-        debugger
         let estacion = res[0].estacion;
         let dir = res[0].direccion;
         let alt = res[0].altitud;
@@ -67,9 +63,7 @@ export class PopupComponent implements OnInit {
         let presion = res[0].presion;
         let radiac = res[0].rad_solar;
         let precipit = res[0].precipitacion;
-        debugger
         this.data.meteo.push(viento, dirviento, temp, hum, presion, radiac, precipit);
-        debugger
         console.log('soy una res con info de Meteo :' + res[0])
       })
     }

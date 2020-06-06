@@ -34,6 +34,9 @@
   }
   &-address {
     font-size: 0.7rem;
+    display: inline-block;
+    height: 5rem;
+    width: 8rem;
   }
 }
 
@@ -63,10 +66,11 @@
   &-li {
       padding: 3px;
       color: white;
+      text-transform: uppercase;
   }
 
   &-li::before {
-      content: "✅";
+      //content: "✅";
       padding-right: 10px;
 
   }
