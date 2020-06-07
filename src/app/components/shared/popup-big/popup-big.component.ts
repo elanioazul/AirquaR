@@ -25,25 +25,41 @@ export class PopupBigComponent implements OnInit {
     private parametersService : ParametersService
   ) { }
 
-  // selectDataForm = this.fb.group({
-  //   parameter: ['select magnitude', [Validators.required]],
-  //   date: ['', [Validators.required]],
-  //   secondstation: ['station']
-  // })
+  selectDataUpForm = this.fb.group({
+    parameter: ['', [Validators.required]],
+    date: ['', [Validators.required]],
+  })
+  selectDataDownForm = this.fb.group({
+    secondstation: ['station', [Validators.required]]
+  })
 
   public preselected: any;
 
-  ngOnInit(): void {
+  public secondaryStationList: [];
 
+  ngOnInit(): void {
     if (this.mapboxservice.meteoStationClicked === undefined) {
       this.data = this.parametersService.airParameters;
       this.preselected = this.parametersService.airParamSelected;
+      debugger
+      this.stationsService.getAirStations().subscribe(
+        (res) => {
+          debugger
+          this.secondaryStationList = res.features;
+          debugger
+      }, (error) => {
+          console.log(error)
+      })
     } else {
       this.data = this.parametersService.meteoParameters;
       this.preselected = this.parametersService.meteoParamSelected;
+      this.stationsService.getMeteoStations().subscribe(
+        (res) => {
+          this.secondaryStationList = res.features;
+        }, (error) => {
+          console.log(error)
+        })
     }
-
-
   }
 
   get airStations() {
@@ -55,13 +71,22 @@ export class PopupBigComponent implements OnInit {
 
   loadDataforChart() {
     if (this.mapboxservice.meteoStationClicked === undefined) {
-      //this.data = this.airParameters;
-      this.dataAir.getAirdataById(this.mapboxservice.airStationClicked)
+      this.dataAir.getAirdataById(this.mapboxservice.airStationClicked).subscribe(
+        (res) => {
+          console.log(res);
+        }, (error) => {
+          console.log(error)
+        }
+      )
 
     } else {
-      this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe((res) => {
-
-      })
+      this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe(
+        (res) => {
+          console.log(res);
+        }, (error) => {
+          console.log(error)
+        }
+      )
 
     }
   }

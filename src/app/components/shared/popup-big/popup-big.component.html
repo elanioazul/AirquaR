@@ -3,43 +3,20 @@
   <h1 class="popup__title">Station name</h1>
   <div class="popup__upcontrol">
     <select class="popup__upcontrol-parameter" name="parameter" id="parameter" [(ngModel)]="preselected">
-      <option value="select" *ngFor="let item of data" [value]= "item.Id">
+      <option *ngFor="let item of data" [value]= "item.Id">
         {{item.Name}}
       </option>
     </select>
     <input type="date" class="popup__upcontrol-date" placeholder="">
   </div>
-  <button type="submit" class="popup__upaction btn">Show</button>
+  <button type="submit" class="popup__upaction btn" (click)="loadDataforChart()">Show</button>
   <div class="img"></div>
   <div class="popup__downcontrol">
     <h1 class="popup__downcontrol-title">Add another station</h1>
     <div class="popup__downontrol-box">
       <select class="popup__downcontrol-station">
         <option value="select" selected>station</option>
-        <option value="Pza. España">Pza. España</option>
-        <option value="Escuelas Aguirre">Escuelas Aguirre</option>
-        <option value="Arturo Soria">Arturo Soria</option>
-        <option value="Avda. Ramon y Cajal">Avda. Ramon y Cajal</option>
-        <option value="Villaverde">Villaverde</option>
-        <option value="Farolillo">Farolillo</option>
-        <option value="Casa de campo">Casa de campo</option>
-        <option value="Barajas pueblo">Barajas pueblo</option>
-        <option value="Pza. del Carmen">Pza. del Carmen</option>
-        <option value="Moratalaz">Moratalaz</option>
-        <option value="Cuatro Caminos">Cuatro Caminos</option>
-        <option value="Barrio del Pilar">Barrio del Pilar</option>
-        <option value="Castellana">Castellana</option>
-        <option value="Pza. Castilla">Pza. Castilla</option>
-        <option value="Vallecas">Vallecas</option>
-        <option value="Mendez Alvaro">Mendez Alvaro</option>
-        <option value="Parque del Retiro">Parque del Retiro</option>
-        <option value="Tres Olivos">Tres Olivos</option>
-        <option value="Juan Carlos I">Juan Carlos I</option>
-        <option value="El Pardo">El Pardo</option>
-        <option value="Sanchinarro">Sanchinarro</option>
-        <option value="Pza. Eliptica">Pza. Eliptica</option>
-        <option value="Urb. Embajada">Urb. Embajada</option>
-        <option value="Ensanche Vallecas">Ensanche Vallecas</option>
+        <option *ngFor="let station of secondaryStationList" [value]= "station.properties.codigo_cor">{{station.properties.estacion}}</option>
       </select>
       <button type="submit" class="popup__downaction btn">Add</button>
     </div>
