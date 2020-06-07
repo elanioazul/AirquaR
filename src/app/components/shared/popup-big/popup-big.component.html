@@ -1,17 +1,11 @@
 <div class="popup">
-  <button type="button" class="btn btn--close popup__close">&times;</button>
+  <button type="button" class="btn btn--close popup__close" (click)="close()">&times;</button>
   <h1 class="popup__title">Station name</h1>
   <div class="popup__upcontrol">
-    <select class="popup__upcontrol-parameter" name="parameter" id="parameter">
-      <option value="select" selected>select parameter</option>
-      <option value="no2">no2</option>
-      <option value="so2">so2</option>
-      <option value="co">co</option>
-      <option value="pm10">pm10</option>
-      <option value="pm2.5">pm2.5</option>
-      <option value="ozono">ozono</option>
-      <option value="btx">btx</option>
-      <option value="hc">hc</option>
+    <select class="popup__upcontrol-parameter" name="parameter" id="parameter" [(ngModel)]="preselected">
+      <option value="select" *ngFor="let item of data" [value]= "item.Id">
+        {{item.Name}}
+      </option>
     </select>
     <input type="date" class="popup__upcontrol-date" placeholder="">
   </div>

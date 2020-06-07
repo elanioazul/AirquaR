@@ -7,7 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class AirDataService {
 
-  private url = `${environment.airquaAPI}/api/v1/airdata`;
+  private airdataurl = `${environment.airquaAPI}api/v1/airdata/station`;
 
   constructor(private http: HttpClient) { }
+
+  getAirdataById(id) {
+    return this.http.get(`${this.airdataurl}/${id}`)
+  }
 }

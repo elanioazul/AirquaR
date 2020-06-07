@@ -7,7 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class MeteoDataService {
 
-  private url = `${environment.airquaAPI}/api/v1/meteodata`;
+  private meteodataurl = `${environment.airquaAPI}api/v1/meteodata/station`;
 
   constructor(private http: HttpClient) { }
+
+  getMeteodataById(id) {
+    return this.http.get(`${this.meteodataurl}/${id}`)
+  }
 }

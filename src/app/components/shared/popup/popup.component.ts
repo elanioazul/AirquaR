@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StationsDataService } from '../../../services/stations-data.service';
 import { MapboxGLService } from '../../../services/mapbox-gl.service';
+import { PopupBigComponent } from '../popup-big/popup-big.component';
 
 @Component({
   selector: 'app-popup',
@@ -16,7 +17,8 @@ export class PopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public stationsService: StationsDataService,
     private mapboxservice: MapboxGLService,
-    public dialogRef: MatDialogRef<PopupComponent>
+    public dialogRef: MatDialogRef<PopupComponent>,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -71,6 +73,10 @@ export class PopupComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  openBigPopup() {
+    let dialogRef = this.dialog.open(PopupBigComponent)
   }
 
 }

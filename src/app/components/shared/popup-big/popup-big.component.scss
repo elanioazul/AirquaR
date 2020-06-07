@@ -3,14 +3,20 @@
 
 
 .popup {
-  position: relative;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  overflow: hidden;
+
+  border: 1px solid $grey-dark;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 86vh;
-  width: 100%;
-  border: 1px solid $grey-dark;
   background-color: $primary-sft;
   font-family: $font-primary;
 
