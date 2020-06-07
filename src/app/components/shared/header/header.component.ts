@@ -14,7 +14,8 @@ import { User } from '../../../classes/user';
 })
 export class HeaderComponent implements OnInit {
 
-  public currentUser: any;
+  //public currentUser: any;
+  public myAirqua = 'My airQ'
 
   constructor(
     @Inject(LOCAL_STORAGE)
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.currentUser = this.storage.get('user')
+    //this.currentUser = this.storage.get('user')
     //this.usersService.getLoggedUser(this.currentUser)
 
   }
