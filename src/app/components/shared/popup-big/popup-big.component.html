@@ -1,24 +1,24 @@
 <div class="popup">
   <button type="button" class="btn btn--close popup__close" (click)="close()">&times;</button>
-  <h1 class="popup__title">Station name</h1>
-  <div class="popup__upcontrol">
+  <h1 class="popup__title">{{stationName}}</h1>
+  <form class="popup__upcontrol" (ngSubmit)="loadDataforChart()">
     <select class="popup__upcontrol-parameter" name="parameter" id="parameter" [(ngModel)]="preselected">
       <option *ngFor="let item of data" [value]= "item.Id">
         {{item.Name}}
       </option>
     </select>
-    <input type="date" class="popup__upcontrol-date" placeholder="">
-  </div>
-  <button type="submit" class="popup__upaction btn" (click)="loadDataforChart()">Show</button>
+    <input type="date" class="popup__upcontrol-date" id="day" placeholder="" name="day" min="2019-01-01" max="2020-03-30">
+    <button type="submit" class="popup__upaction btn">Show</button>
+  </form>
   <div class="img"></div>
   <div class="popup__downcontrol">
     <h1 class="popup__downcontrol-title">Add another station</h1>
-    <div class="popup__downontrol-box">
+    <form class="popup__downontrol-box" (ngSubmit)="loadSecondStationforChart()">
       <select class="popup__downcontrol-station">
         <option value="select" selected>station</option>
         <option *ngFor="let station of secondaryStationList" [value]= "station.properties.codigo_cor">{{station.properties.estacion}}</option>
       </select>
       <button type="submit" class="popup__downaction btn">Add</button>
-    </div>
+    </form>
   </div>
 </div>

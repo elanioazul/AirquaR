@@ -46,7 +46,6 @@ export class PopupComponent implements OnInit {
         let btx = res[0].btx;
         let hc = res[0].hc;
         this.data.air.push(no2, so2, co, pm10, pm25, o3, btx, hc);
-        console.log('soy una res con info de Air :' + res[0])
       }, (error) => {
         console.log(error)
       })
@@ -66,7 +65,6 @@ export class PopupComponent implements OnInit {
         let radiac = res[0].rad_solar;
         let precipit = res[0].precipitacion;
         this.data.meteo.push(viento, dirviento, temp, hum, presion, radiac, precipit);
-        console.log('soy una res con info de Meteo :' + res[0])
       })
     }
   }

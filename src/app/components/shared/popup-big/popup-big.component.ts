@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { StationsDataService } from '../../../services/stations-data.service';
 import { MapboxGLService } from '../../../services/mapbox-gl.service';
 import { AirDataService } from '../../../services/data-air.service';
@@ -25,13 +25,10 @@ export class PopupBigComponent implements OnInit {
     private parametersService : ParametersService
   ) { }
 
-  selectDataUpForm = this.fb.group({
-    parameter: ['', [Validators.required]],
-    date: ['', [Validators.required]],
-  })
-  selectDataDownForm = this.fb.group({
-    secondstation: ['station', [Validators.required]]
-  })
+  //parametersForm: FormGroup;
+  //secondStationForm: FormGroup;
+
+  public stationName: any;
 
   public preselected: any;
 
@@ -39,18 +36,21 @@ export class PopupBigComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.mapboxservice.meteoStationClicked === undefined) {
+      this.stationsService.getAirStationById(this.mapboxservice.airStationClicked).subscribe((res) => {
+        this.stationName = res[0].estacion;
+      })
       this.data = this.parametersService.airParameters;
       this.preselected = this.parametersService.airParamSelected;
-      debugger
       this.stationsService.getAirStations().subscribe(
         (res) => {
-          debugger
           this.secondaryStationList = res.features;
-          debugger
       }, (error) => {
           console.log(error)
       })
     } else {
+      this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe((res) => {
+        this.stationName = res[0].estacion;
+      })
       this.data = this.parametersService.meteoParameters;
       this.preselected = this.parametersService.meteoParamSelected;
       this.stationsService.getMeteoStations().subscribe(
@@ -70,25 +70,36 @@ export class PopupBigComponent implements OnInit {
   }
 
   loadDataforChart() {
+    let dateControl = document.querySelector('input[type="date"]');
+    console.log(dateControl);
+    const dataRequest = Object.assign({}, this.mapboxservice.airStationClicked)
+    debugger
     if (this.mapboxservice.meteoStationClicked === undefined) {
+      debugger
       this.dataAir.getAirdataById(this.mapboxservice.airStationClicked).subscribe(
         (res) => {
-          console.log(res);
+          debugger
+          console.log('res para el chart' + res);
+          debugger
         }, (error) => {
-          console.log(error)
+          console.log('error para el chart' + error)
         }
       )
-
     } else {
-      this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe(
+      this.dataMeteo.getMeteodataById(this.mapboxservice.meteoStationClicked).subscribe(
         (res) => {
+          debugger
           console.log(res);
+          debugger
         }, (error) => {
           console.log(error)
         }
       )
-
     }
+  }
+
+  loadSecondStationforChart() {
+
   }
 
   close() {
