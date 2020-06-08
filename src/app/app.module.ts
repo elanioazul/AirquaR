@@ -25,6 +25,7 @@ import { UserhomeComponent } from './components/collector/userhome/userhome.comp
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ChartComponent } from './components/shared/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CollectorFormComponent,
     PopupComponent,
     PopupBigComponent,
-    UserhomeComponent
+    UserhomeComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

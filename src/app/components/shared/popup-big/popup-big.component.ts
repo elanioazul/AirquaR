@@ -28,6 +28,8 @@ export class PopupBigComponent implements OnInit {
   //parametersForm: FormGroup;
   //secondStationForm: FormGroup;
 
+  public dataStream: any;
+
   public stationName: any;
 
   public preselected: any;
@@ -74,9 +76,13 @@ export class PopupBigComponent implements OnInit {
     let dateControl = (<HTMLInputElement>document.getElementById("date")).value;
     let parseadita = Date.parse(dateControl)
     const newDate = new Date(parseadita)
+    console.log(newDate)
     let year = newDate.getFullYear();
-    let month = newDate.getMonth();
-    let day = newDate.getDay();
+    console.log(year)
+    let month = newDate.getMonth() + 1;
+    console.log(month);
+    let day = newDate.getUTCDate();
+    console.log(day)
 
     debugger
     if (this.mapboxservice.meteoStationClicked === undefined) {
@@ -92,6 +98,7 @@ export class PopupBigComponent implements OnInit {
         (res) => {
           debugger
           console.log('res para el chart' + res);
+          this.dataStream = res;
           debugger
         }, (error) => {
           console.log('error para el chart' + error)
@@ -108,6 +115,7 @@ export class PopupBigComponent implements OnInit {
         (res) => {
           debugger
           console.log(res);
+          this.dataStream = res;
           debugger
         }, (error) => {
           console.log(error)
