@@ -70,9 +70,13 @@ export class PopupBigComponent implements OnInit {
   }
 
   loadDataforChart() {
-    let dateControl = document.querySelector('input[type="date"]');
-    console.log(dateControl);
-    const dataRequest = Object.assign({}, this.mapboxservice.airStationClicked)
+    let dateControl = (<HTMLInputElement>document.getElementById("date")).value;
+    let parseadita = Date.parse(dateControl)
+    const newDate = new Date(parseadita)
+    let year = newDate.getFullYear();
+    let month = newDate.getMonth();
+    let day = newDate.getDay();
+    const customizedDataRequestForChart = Object.assign({}, this.mapboxservice.airStationClicked)
     debugger
     if (this.mapboxservice.meteoStationClicked === undefined) {
       debugger
