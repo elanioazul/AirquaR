@@ -98,7 +98,13 @@ export class PopupBigComponent implements OnInit {
         }
       )
     } else {
-      this.dataMeteo.getMeteodataById(this.mapboxservice.meteoStationClicked).subscribe(
+      const customizedDataRequestForChart = {
+        magnitud: parameterForm.value.parameter,
+        ano: year,
+        mes: month,
+        dia: day
+      };
+      this.dataMeteo.getMeteodataById(this.mapboxservice.meteoStationClicked, customizedDataRequestForChart).subscribe(
         (res) => {
           debugger
           console.log(res);
