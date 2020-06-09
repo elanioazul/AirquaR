@@ -76,13 +76,9 @@ export class PopupBigComponent implements OnInit {
     let dateControl = (<HTMLInputElement>document.getElementById("date")).value;
     let parseadita = Date.parse(dateControl)
     const newDate = new Date(parseadita)
-    console.log(newDate)
     let year = newDate.getFullYear();
-    console.log(year)
     let month = newDate.getMonth() + 1;
-    console.log(month);
     let day = newDate.getUTCDate();
-    console.log(day)
 
     debugger
     if (this.mapboxservice.meteoStationClicked === undefined) {
