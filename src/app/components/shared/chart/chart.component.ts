@@ -10,27 +10,27 @@ export class ChartComponent implements OnChanges {
 
   @Input('data') dataForChart: any;
 
-  public xlabels: any;
-  public yvalues: any;
+  public xlabels: any[];
+  public yvalues: any[];
 
   constructor() { }
 
   ngOnChanges(): void {
-    debugger
-    console.log(this.dataForChart);
-    debugger
-    this.dataForChart[0].keys = this.xlabels;
-    this.dataForChart[0].values = this.yvalues;
+    if (Array.isArray(this.dataForChart) && this.dataForChart.length > 0) {
+      this.xlabels = Object.keys(this.dataForChart[0]);
+      this.yvalues = Object.values(this.dataForChart[0]);
+    }
 
     var mySuperChart = new Chart("myChart", {
       type: 'line',
       data: {
         labels: this.xlabels,
         datasets: [{
-          label: 'Magnitude variation along the day',
+          label: 'Parameter variation along the day',
           data: this.yvalues,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          fill: false,
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          borderColor: 'rgba(0, 0, 0, 1)',
           borderWidth: 1
         }]
       },

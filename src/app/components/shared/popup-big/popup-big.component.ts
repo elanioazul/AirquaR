@@ -80,22 +80,17 @@ export class PopupBigComponent implements OnInit {
     let month = newDate.getMonth() + 1;
     let day = newDate.getUTCDate();
 
-    debugger
     if (this.mapboxservice.meteoStationClicked === undefined) {
-      debugger
       const customizedDataRequestForChart = {
         magnitud: parameterForm.value.parameter,
         ano: year,
         mes: month,
         dia: day
       };
-      debugger
       this.dataAir.getAirdataById(this.mapboxservice.airStationClicked, customizedDataRequestForChart).subscribe(
         (res) => {
-          debugger
           console.log('res para el chart' + res);
           this.dataStream = res;
-          debugger
         }, (error) => {
           console.log('error para el chart' + error)
         }
@@ -109,10 +104,8 @@ export class PopupBigComponent implements OnInit {
       };
       this.dataMeteo.getMeteodataById(this.mapboxservice.meteoStationClicked, customizedDataRequestForChart).subscribe(
         (res) => {
-          debugger
           console.log(res);
           this.dataStream = res;
-          debugger
         }, (error) => {
           console.log(error)
         }

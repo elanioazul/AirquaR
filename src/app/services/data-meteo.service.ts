@@ -14,7 +14,6 @@ export class MeteoDataService {
 
 
   getMeteodataById(id, parameter: any): Observable<any> {
-    debugger
     return this.http.post(`${this.meteodataurl}/${id}`, parameter)
   }
 }
