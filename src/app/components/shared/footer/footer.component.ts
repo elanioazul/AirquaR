@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, HostListener } from '@angular/core';
-
-
+import { MapboxGLService } from 'src/app/services/mapbox-gl.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,13 +10,17 @@ export class FooterComponent implements OnInit {
 
 
 
-  constructor() {
+  constructor(private mapService: MapboxGLService) {
 
   }
 
 
 
   ngOnInit(): void {
+  }
+
+  navigator (event) {
+    this.mapService.navigation();
   }
 
 

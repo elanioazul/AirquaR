@@ -1,6 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
+//import { MapboxDirections } from '@mapbox/mapbox-gl-directions';
+import { MapboxDirections } from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
 import { Subscription, Observable, from, empty } from 'rxjs';
@@ -125,6 +127,20 @@ export class MapboxGLService {
   toogleLayer(layerName, visible) {
     const mode = visible ? 'visible' : 'none';
     this.map.setLayoutProperty(layerName, 'visibility', mode);
+  }
+
+  navigation() {
+    this.map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-3.704170, 40.417554],
+      zoom: 14
+    });
+    // Add zoom and rotation controls to the map.
+    this.map.addControl(new mapboxgl.NavigationControl());
+    // Add router
+    this.map.addControl(new MapboxDirections({accessToken:'pk.eyJ1IjoiaHVndWV0ZSIsImEiOiJjazZsMnNrNTMwOXNmM29wYTdpZ2FteWtzIn0.4xxdAN7esyBwMqI8CSq7ww'}), 'top-left');
+
   }
 
   ngOnDestroy(): void {
