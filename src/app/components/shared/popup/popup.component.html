@@ -1,32 +1,32 @@
 <div class="popup">
   <button type="button" class="btn btn--close popup__close" (click)="close()">&times;</button>
   <div class="popup__details">
-      <h1 class="popup__details-name">{{data.comun[0]}}</h1>
-      <h2 class="popup__details-address">{{data.comun[1]}}</h2>
+      <h1 class="popup__details-name">{{data.estacion}}</h1>
+      <h2 class="popup__details-address">{{data.direccion}}</h2>
   </div>
   <div class="popup__coord">
-      <p class="popup__coord-detail">{{data.comun[3]}}</p>
-      <p class="popup__coord-detail">{{data.comun[4]}}</p>
-      <p class="popup__coord-detail">Altitud: {{data.comun[2]}} msnm</p>
+      <p class="popup__coord-detail">{{data.lon_geogra}}</p>
+      <p class="popup__coord-detail">{{data.lat_geogra}}</p>
+      <p class="popup__coord-detail">Altitud: {{data.altitud}} msnm</p>
   </div>
-    <ul class="popup__list" *ngIf="data.air?.length">
+    <ul class="popup__list" *ngIf="isAir">
       <li class="popup__list-li" data-foo="no2: ">{{data.no2}}</li>
-      <li class="popup__list-li" data-foo="so2: ">{{data.air[1]}}</li>
-      <li class="popup__list-li" data-foo="co: ">{{data.air[2]}}</li>
-      <li class="popup__list-li" data-foo="pm10: ">{{data.air[3]}}</li>
-      <li class="popup__list-li" data-foo="pm2,5: ">{{data.air[4]}}</li>
-      <li class="popup__list-li" data-foo="o3: ">{{data.air[5]}}</li>
-      <li class="popup__list-li" data-foo="btx_ ">{{data.air[6]}}</li>
-      <li class="popup__list-li" data-foo="hc: ">{{data.air[7]}}</li>
+      <li class="popup__list-li" data-foo="so2: ">{{data.so2}}</li>
+      <li class="popup__list-li" data-foo="co: ">{{data.co}}</li>
+      <li class="popup__list-li" data-foo="pm10: ">{{data.pm10}}</li>
+      <li class="popup__list-li" data-foo="pm2,5: ">{{data.pm2_5}}</li>
+      <li class="popup__list-li" data-foo="o3: ">{{data.o3}}</li>
+      <li class="popup__list-li" data-foo="btx_ ">{{data.btx}}</li>
+      <li class="popup__list-li" data-foo="hc: ">{{data.hc}}</li>
     </ul>
-    <ul class="popup__list" *ngIf="data.meteo?.length">
-      <li class="popup__list-li" data-foo="V.viento: ">{{data.meteo[0]}}</li>
-      <li class="popup__list-li" data-foo="Dir.viento: ">{{data.meteo[1]}}</li>
-      <li class="popup__list-li" data-foo="Tª: ">{{data.meteo[2]}}</li>
-      <li class="popup__list-li" data-foo="Hum.rel: ">{{data.meteo[3]}}</li>
-      <li class="popup__list-li" data-foo="Presión: ">{{data.meteo[4]}}</li>
-      <li class="popup__list-li" data-foo="Rad.solar: ">{{data.meteo[5]}}</li>
-      <li class="popup__list-li" data-foo="Precip: ">{{data.meteo[6]}}</li>
+    <ul class="popup__list" *ngIf="isMeteo">
+      <li class="popup__list-li" data-foo="V.viento: ">{{data.v_viento}}</li>
+      <li class="popup__list-li" data-foo="Dir.viento: ">{{data.dir_viento}}</li>
+      <li class="popup__list-li" data-foo="Tª: ">{{data.temperatura}}</li>
+      <li class="popup__list-li" data-foo="Hum.rel: ">{{data.hum_rel}}</li>
+      <li class="popup__list-li" data-foo="Presión: ">{{data.presion}}</li>
+      <li class="popup__list-li" data-foo="Rad.solar: ">{{data.rad_solar}}</li>
+      <li class="popup__list-li" data-foo="Precip: ">{{data.precipitacion}}</li>
     </ul>
   <button class="btn btn-access" type="button" (click)="openBigPopup()">Access to data</button>
 </div>

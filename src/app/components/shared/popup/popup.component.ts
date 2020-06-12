@@ -11,7 +11,8 @@ import { PopupBigComponent } from '../popup-big/popup-big.component';
 })
 export class PopupComponent implements OnInit {
 
-
+  isMeteo = false;
+  isAir = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -22,14 +23,18 @@ export class PopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.mapboxservice.meteoStationClicked === undefined) {
+      this.isAir = true;
+    } if (this.mapboxservice.airStationClicked === undefined) {
+      this.isMeteo = true;
+    }
 
-    debugger
     /*this.data = {
       comun: [],
       air: [],
       meteo: []
     }*/
-
+    /*
     if (this.mapboxservice.meteoStationClicked === undefined) {
       this.stationsService.getAirStationById(this.mapboxservice.airStationClicked).subscribe((res) => {
         let estacion = res[0].estacion;
@@ -68,6 +73,7 @@ export class PopupComponent implements OnInit {
         this.data.meteo.push(viento, dirviento, temp, hum, presion, radiac, precipit);
       })
     }
+    */
   }
 
   close() {
