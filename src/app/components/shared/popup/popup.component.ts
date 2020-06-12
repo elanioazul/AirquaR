@@ -23,11 +23,12 @@ export class PopupComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.data = {
+    debugger
+    /*this.data = {
       comun: [],
       air: [],
       meteo: []
-    }
+    }*/
 
     if (this.mapboxservice.meteoStationClicked === undefined) {
       this.stationsService.getAirStationById(this.mapboxservice.airStationClicked).subscribe((res) => {

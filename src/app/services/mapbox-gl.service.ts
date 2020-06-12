@@ -16,8 +16,6 @@ import { PopupComponent } from '../components/shared/popup/popup.component';
 })
 export class MapboxGLService {
 
-  private _navigation = new Subject();
-  navigation$ = this._navigation.asObservable();
 
   //default settings to build up the map
   map: mapboxgl.Map;
@@ -123,13 +121,16 @@ export class MapboxGLService {
 
   addClick(map) {
     map.on('click', (e) => {
+      debugger
       const features = map.queryRenderedFeatures(e.point, { layers: ['airstationsLayer', 'meteostationsLayer']});
       if (features[0].layer.source === 'airstations') {
         this.airStationClicked = features[0].properties.codigo_cor;
       } if (features[0].layer.source === 'meteostations') {
         this.meteoStationClicked = features[0].properties.codigo_cor;
       }
-      let dialogRef = this.dialog.open(PopupComponent)
+      let dialogRef = this.dialog.open(PopupComponent, {
+        data: features[0].properties
+      })
     })
   }
 

@@ -26,7 +26,7 @@ export class ChartComponent implements OnChanges {
       data: {
         labels: this.xlabels,
         datasets: [{
-          label: 'Parameter variation along the day',
+          label: 'Parameter variation during the day',
           data: this.yvalues,
           fill: false,
           backgroundColor: 'rgba(0, 0, 0, 0.2)',
