@@ -45,10 +45,14 @@ export class MapComponent implements OnInit {
     this.mapService.buildMap();
   }
 
-
-  switchLayer(layerId) {
-    this.mapService.map.setStyle('mapbox://styles/mapbox/' + layerId);
+  navigator() {
+    this.mapService.navigation();
   }
+
+
+  // switchLayer(layerId) {
+  //   this.mapService.map.setStyle('mapbox://styles/mapbox/' + layerId);
+  // }
 
 
 

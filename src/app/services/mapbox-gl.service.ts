@@ -2,10 +2,11 @@ import { Injectable, Inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 //import { MapboxDirections } from '@mapbox/mapbox-gl-directions';
-import { MapboxDirections } from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import  MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
-import { Subscription, Observable, from, empty } from 'rxjs';
+import { Subscription, Subject, Observable, from, empty } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PopupComponent } from '../components/shared/popup/popup.component';
@@ -14,6 +15,9 @@ import { PopupComponent } from '../components/shared/popup/popup.component';
   providedIn: 'root'
 })
 export class MapboxGLService {
+
+  private _navigation = new Subject();
+  navigation$ = this._navigation.asObservable();
 
   //default settings to build up the map
   map: mapboxgl.Map;
@@ -42,6 +46,7 @@ export class MapboxGLService {
     private stations: StationsDataService
     ) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
+    (MapboxDirections).accessToken = environment.mapBoxToken;
   }
 
   buildMap() {
@@ -55,7 +60,12 @@ export class MapboxGLService {
     });
     this.map.addControl(new mapboxgl.NavigationControl());
     this.map.addControl(this.scale);
-    this.map.on('load', () => {
+
+    return this.map;
+  }
+
+  addGeodata() {
+    this.map.once('data', () => {
       this.stations.getAirStations().subscribe(data => {
         this.addSource(this.map, 'airstations', data);
         this.addAirstationsLayer(this.map);
@@ -66,7 +76,6 @@ export class MapboxGLService {
         this.addMeteostationsLayer(this.map);
       })
     })
-    return this.map;
   }
 
   addSource(map, sourceName, data) {
@@ -130,16 +139,11 @@ export class MapboxGLService {
   }
 
   navigation() {
-    this.map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-3.704170, 40.417554],
-      zoom: 14
-    });
-    // Add zoom and rotation controls to the map.
-    this.map.addControl(new mapboxgl.NavigationControl());
-    // Add router
     this.map.addControl(new MapboxDirections({accessToken:'pk.eyJ1IjoiaHVndWV0ZSIsImEiOiJjazZsMnNrNTMwOXNmM29wYTdpZ2FteWtzIn0.4xxdAN7esyBwMqI8CSq7ww'}), 'top-left');
+
+  }
+
+  geocoding() {
 
   }
 

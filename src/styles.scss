@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@500&display=swap');
-
+@import url('@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css');
 
 @import './sass/reset';
 @import './sass/variables';

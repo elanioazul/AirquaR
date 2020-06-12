@@ -36,17 +36,21 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  checkAllOptions() {
-    //City layers
-    if (this.checkboxesCity.every(val => val.checked == true))
-      this.checkboxesCity.forEach(val => { val.checked = false });
-    else
-      this.checkboxesCity.forEach(val => { val.checked = true });
-    //Air and meteo layers
-    if (this.checkboxesAir.every(val => val.checked == true))
-      this.checkboxesAir.forEach(val => { val.checked = false });
-    else
-      this.checkboxesAir.forEach(val => { val.checked = true });
+  // checkAllOptions() {
+  //   //City layers
+  //   if (this.checkboxesCity.every(val => val.checked == true))
+  //     this.checkboxesCity.forEach(val => { val.checked = false });
+  //   else
+  //     this.checkboxesCity.forEach(val => { val.checked = true });
+  //   //Air and meteo layers
+  //   if (this.checkboxesAir.every(val => val.checked == true))
+  //     this.checkboxesAir.forEach(val => { val.checked = false });
+  //   else
+  //     this.checkboxesAir.forEach(val => { val.checked = true });
+  // }
+
+  displayGeodata($event) {
+    this.mapService.addGeodata();
   }
 
   airStationsToggle(event) {

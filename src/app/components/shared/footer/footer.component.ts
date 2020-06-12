@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, HostListener } from '@angular/core';
+import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/core';
 import { MapboxGLService } from 'src/app/services/mapbox-gl.service';
 
 @Component({
@@ -8,7 +8,8 @@ import { MapboxGLService } from 'src/app/services/mapbox-gl.service';
 })
 export class FooterComponent implements OnInit {
 
-
+  @Output() navigateEvent = new EventEmitter<any>();
+  navigate: Boolean = false;
 
   constructor(private mapService: MapboxGLService) {
 
@@ -19,8 +20,14 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigator (event) {
+  navigator ($event) {
+    //this.navigate = !this.navigate
+    //this.navigateEvent.emit(this.navigate);
     this.mapService.navigation();
+  }
+
+  geocoder($event) {
+
   }
 
 

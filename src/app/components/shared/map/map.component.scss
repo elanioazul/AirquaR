@@ -1,6 +1,12 @@
 @import '../../../../sass/variables';
 @import '../../../../sass/rem';
 
+.mapbox-directions-component {
+  width: 70vw;
+}
+.mapbox-directions-profile {
+  margin-left: 0px;
+}
 
 .map {
   height: 86vh;
