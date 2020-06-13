@@ -5,7 +5,7 @@ Responsive web mapping app for the visualiztion of meteo&air Madrid open data
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
 
-To check out the backend project visit the following link: 
+To check out the backend side of the project visit the following link: 
 https://github.com/elanioazul/Airqua-pg-back
 
 # Technologies:
