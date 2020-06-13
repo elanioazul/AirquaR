@@ -1,6 +1,6 @@
 <div class="popup">
   <button type="button" class="btn btn--close popup__close" (click)="close()">&times;</button>
-  <h1 class="popup__title">{{stationName}}</h1>
+  <h1 class="popup__title">{{propertiesStation.estacion}}</h1>
   <form class="popup__upcontrol" #parameterForm="ngForm" (ngSubmit)="loadDataforChartById(parameterForm)">
     <select class="popup__upcontrol-parameter" name="parameter" id="parameter" [(ngModel)]="preselected">
       <option *ngFor="let item of data" [value]= "item.Id">

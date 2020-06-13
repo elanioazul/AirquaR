@@ -36,8 +36,9 @@ export class MapboxGLService {
   public dialogRef;
 
   public stationClicked: any;
-  public airStationClicked: any;
-  public meteoStationClicked: any;
+  public stationClickedProperties: any;
+  //public airStationClicked: any;
+  //public meteoStationClicked: any;
 
   constructor(
     public dialog: MatDialog,
@@ -122,12 +123,9 @@ export class MapboxGLService {
   addClick(map) {
     map.on('click', (e) => {
       const features = map.queryRenderedFeatures(e.point, { layers: ['airstationsLayer', 'meteostationsLayer']});
-      if (features[0].layer.source === 'airstations') {
-        this.airStationClicked = features[0].properties.codigo_cor;
-      } if (features[0].layer.source === 'meteostations') {
-        this.meteoStationClicked = features[0].properties.codigo_cor;
-      }
-      debugger
+      this.stationClicked = features[0].source;
+      this.stationClickedProperties = features[0].properties;
+
       let dialogRef = this.dialog.open(PopupComponent, {
         data: features[0].properties
       })

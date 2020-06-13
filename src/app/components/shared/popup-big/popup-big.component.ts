@@ -27,20 +27,17 @@ export class PopupBigComponent implements OnInit {
 
   //parametersForm: FormGroup;
   //secondStationForm: FormGroup;
+  public propertiesStation: any;
 
   public dataStream: any;
-
-  public stationName: any;
 
   public preselected: any;
 
   public secondaryStationList: [];
 
   ngOnInit(): void {
-    if (this.mapboxservice.meteoStationClicked === undefined) {
-      this.stationsService.getAirStationById(this.mapboxservice.airStationClicked).subscribe((res) => {
-        this.stationName = res[0].estacion;
-      })
+    this.propertiesStation = this.mapboxservice.stationClickedProperties;
+    if (this.mapboxservice.stationClicked === 'airstations') {
       this.data = this.parametersService.airParameters;
       this.preselected = this.parametersService.airParamSelected;
       this.stationsService.getAirStations().subscribe(
@@ -49,10 +46,8 @@ export class PopupBigComponent implements OnInit {
       }, (error) => {
           console.log(error)
       })
-    } else {
-      this.stationsService.getMeteoStationById(this.mapboxservice.meteoStationClicked).subscribe((res) => {
-        this.stationName = res[0].estacion;
-      })
+    }
+    if (this.mapboxservice.stationClicked === 'meteostations') {
       this.data = this.parametersService.meteoParameters;
       this.preselected = this.parametersService.meteoParamSelected;
       this.stationsService.getMeteoStations().subscribe(
@@ -60,8 +55,11 @@ export class PopupBigComponent implements OnInit {
           this.secondaryStationList = res.features;
         }, (error) => {
           console.log(error)
-        })
+      })
     }
+
+
+
   }
 
   get airStations() {
@@ -80,14 +78,14 @@ export class PopupBigComponent implements OnInit {
     let month = newDate.getMonth() + 1;
     let day = newDate.getUTCDate();
 
-    if (this.mapboxservice.meteoStationClicked === undefined) {
+    if (this.mapboxservice.stationClicked === 'airstations') {
       const customizedDataRequestForChart = {
         magnitud: parameterForm.value.parameter,
         ano: year,
         mes: month,
         dia: day
       };
-      this.dataAir.getAirdataById(this.mapboxservice.airStationClicked, customizedDataRequestForChart).subscribe(
+      this.dataAir.getAirdataById(this.mapboxservice.stationClickedProperties.codigo_cor, customizedDataRequestForChart).subscribe(
         (res) => {
           console.log('res para el chart' + res);
           this.dataStream = res;
@@ -102,7 +100,7 @@ export class PopupBigComponent implements OnInit {
         mes: month,
         dia: day
       };
-      this.dataMeteo.getMeteodataById(this.mapboxservice.meteoStationClicked, customizedDataRequestForChart).subscribe(
+      this.dataMeteo.getMeteodataById(this.mapboxservice.stationClickedProperties.codigo_cor, customizedDataRequestForChart).subscribe(
         (res) => {
           console.log(res);
           this.dataStream = res;

@@ -9,7 +9,7 @@
       <p class="popup__coord-detail">{{data.lat_geogra}}</p>
       <p class="popup__coord-detail">Altitud: {{data.altitud}} msnm</p>
   </div>
-    <ul class="popup__list" *ngIf="isAir">
+    <ul class="popup__list" *ngIf="isAir; else elseBlock">
       <li class="popup__list-li" data-foo="no2: ">{{data.no2}}</li>
       <li class="popup__list-li" data-foo="so2: ">{{data.so2}}</li>
       <li class="popup__list-li" data-foo="co: ">{{data.co}}</li>
@@ -19,14 +19,17 @@
       <li class="popup__list-li" data-foo="btx_ ">{{data.btx}}</li>
       <li class="popup__list-li" data-foo="hc: ">{{data.hc}}</li>
     </ul>
-    <ul class="popup__list" *ngIf="isMeteo">
-      <li class="popup__list-li" data-foo="V.viento: ">{{data.v_viento}}</li>
-      <li class="popup__list-li" data-foo="Dir.viento: ">{{data.dir_viento}}</li>
-      <li class="popup__list-li" data-foo="Tª: ">{{data.temperatura}}</li>
-      <li class="popup__list-li" data-foo="Hum.rel: ">{{data.hum_rel}}</li>
-      <li class="popup__list-li" data-foo="Presión: ">{{data.presion}}</li>
-      <li class="popup__list-li" data-foo="Rad.solar: ">{{data.rad_solar}}</li>
-      <li class="popup__list-li" data-foo="Precip: ">{{data.precipitacion}}</li>
-    </ul>
+    <ng-template #elseBlock>
+      <ul class="popup__list">
+        <li class="popup__list-li" data-foo="V.viento: ">{{data.v_viento}}</li>
+        <li class="popup__list-li" data-foo="Dir.viento: ">{{data.dir_viento}}</li>
+        <li class="popup__list-li" data-foo="Tª: ">{{data.temperatura}}</li>
+        <li class="popup__list-li" data-foo="Hum.rel: ">{{data.hum_rel}}</li>
+        <li class="popup__list-li" data-foo="Presión: ">{{data.presion}}</li>
+        <li class="popup__list-li" data-foo="Rad.solar: ">{{data.rad_solar}}</li>
+        <li class="popup__list-li" data-foo="Precip: ">{{data.precipitacion}}</li>
+      </ul>
+    </ng-template>
+
   <button class="btn btn-access" type="button" (click)="openBigPopup()">Access to data</button>
 </div>

@@ -11,7 +11,7 @@ import { PopupBigComponent } from '../popup-big/popup-big.component';
 })
 export class PopupComponent implements OnInit {
 
-  isMeteo = false;
+  //isMeteo = false;
   isAir = false;
 
   constructor(
@@ -23,10 +23,17 @@ export class PopupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.mapboxservice.meteoStationClicked === undefined) {
-      this.isAir = true;
-    } if (this.mapboxservice.airStationClicked === undefined) {
-      this.isMeteo = true;
+    //if (this.mapboxservice.meteoStationClicked === undefined) {
+    //  this.isAir = true;
+    //} /*else {
+    //  this.isMeteo = true;
+    //}*/
+
+    if (this.mapboxservice.stationClicked === 'airstations') {
+      this.isAir = true
+    }
+    if (this.mapboxservice.stationClicked === 'meteostations') {
+      this.isAir = this.isAir
     }
 
     /*this.data = {
