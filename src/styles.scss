@@ -19,4 +19,26 @@
     padding: unset !important;
 }
 
+.mapboxgl-ctrl-geocoder input[type='text'] {
+  padding-left: 30px;
+  border-radius: 8px;
+  border: 1px solid $primary;
+}
+.mapboxgl-ctrl-geocoder--icon-search {
+  left: 5px;
+  top: 10px;
+}
+
+.mapbox-directions-origin {
+  border-radius: 8px 8px 8px 8px;
+}
+.mapboxgl-ctrl-geocoder {
+  border-radius: 8px 8px 8px 8px;
+}
+
+.mapbox-directions-profile {
+  border: 1px solid $primary;
+}
+
+
 

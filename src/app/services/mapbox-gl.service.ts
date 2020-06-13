@@ -152,7 +152,7 @@ export class MapboxGLService {
       mapboxgl: mapboxgl
     });
 
-    this.map.addControl(geocoder);
+    this.map.addControl(geocoder, 'top-left');
   }
 
   ngOnDestroy(): void {
