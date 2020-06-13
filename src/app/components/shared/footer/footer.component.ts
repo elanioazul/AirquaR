@@ -27,7 +27,7 @@ export class FooterComponent implements OnInit {
   }
 
   geocoder($event) {
-
+    this.mapService.geocoding();
   }
 
 

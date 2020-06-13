@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 //import { MapboxDirections } from '@mapbox/mapbox-gl-directions';
 import  MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-
+import Geocoder from '@mapbox/mapbox-gl-geocoder';
 import { StationsDataService } from './stations-data.service';
 import { map, tap } from 'rxjs/operators';
 import { Subscription, Subject, Observable, from, empty } from 'rxjs';
@@ -46,6 +46,7 @@ export class MapboxGLService {
     ) {
     (mapboxgl as any).accessToken = environment.mapBoxToken;
     (MapboxDirections).accessToken = environment.mapBoxToken;
+    (Geocoder).accessToken = environment.mapBoxToken;
   }
 
   buildMap() {
@@ -143,7 +144,15 @@ export class MapboxGLService {
   }
 
   geocoding() {
+    let geocoder = new Geocoder({
+      accessToken: mapboxgl.accessToken,
+      marker: {
+          color: 'orange'
+      },
+      mapboxgl: mapboxgl
+    });
 
+    this.map.addControl(geocoder);
   }
 
   ngOnDestroy(): void {
