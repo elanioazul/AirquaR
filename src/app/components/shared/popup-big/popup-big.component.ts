@@ -116,23 +116,18 @@ export class PopupBigComponent implements OnInit {
   loadSecondStationforChart(secondStationForm) {
     if (this.mapboxservice.stationClicked === 'airstations') {
       console.log(secondStationForm)
-      debugger
       this.dataAir.getAirdataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
         (res) => {
-          debugger
-          console.log('la res para la second station es :' + res);
           this.dataStreamTwo = res;
-          debugger
         }, (error) => {
           console.log(error)
         }
       )
     } else {
-      this.dataMeteo.getMeteodataById(secondStationForm.value.statio, this.customizedDataRequestForChart).subscribe(
+      this.dataMeteo.getMeteodataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
         (res) => {
           console.log(res);
           this.dataStreamTwo = res;
-          debugger
         }, (error) => {
           console.log(error)
         }

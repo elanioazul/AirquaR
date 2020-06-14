@@ -14,7 +14,6 @@ export class AirDataService {
   constructor(private http: HttpClient) { }
 
   getAirdataById(id, parameter: any): Observable<any> {
-    debugger
     return this.http.post(`${this.airdataurl}/${id}`, parameter)
   }
 }
