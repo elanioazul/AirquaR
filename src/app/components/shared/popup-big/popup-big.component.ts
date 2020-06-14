@@ -25,15 +25,18 @@ export class PopupBigComponent implements OnInit {
     private parametersService : ParametersService
   ) { }
 
-  //parametersForm: FormGroup;
-  //secondStationForm: FormGroup;
+
   public propertiesStation: any;
 
   public dataStream: any;
+  public dataStreamTwo: any;
 
   public preselected: any;
 
   public secondaryStationList: [];
+
+  public customizedDataRequestForChart: any;
+
 
   ngOnInit(): void {
     this.propertiesStation = this.mapboxservice.stationClickedProperties;
@@ -71,6 +74,7 @@ export class PopupBigComponent implements OnInit {
 
   loadDataforChartById(parameterForm) {
     console.log(parameterForm)
+    debugger
     let dateControl = (<HTMLInputElement>document.getElementById("date")).value;
     let parseadita = Date.parse(dateControl)
     const newDate = new Date(parseadita)
@@ -79,13 +83,13 @@ export class PopupBigComponent implements OnInit {
     let day = newDate.getUTCDate();
 
     if (this.mapboxservice.stationClicked === 'airstations') {
-      const customizedDataRequestForChart = {
+      this.customizedDataRequestForChart = {
         magnitud: parameterForm.value.parameter,
         ano: year,
         mes: month,
         dia: day
       };
-      this.dataAir.getAirdataById(this.mapboxservice.stationClickedProperties.codigo_cor, customizedDataRequestForChart).subscribe(
+      this.dataAir.getAirdataById(this.mapboxservice.stationClickedProperties.codigo_cor, this.customizedDataRequestForChart).subscribe(
         (res) => {
           console.log('res para el chart' + res);
           this.dataStream = res;
@@ -94,13 +98,13 @@ export class PopupBigComponent implements OnInit {
         }
       )
     } else {
-      const customizedDataRequestForChart = {
+      this.customizedDataRequestForChart = {
         magnitud: parameterForm.value.parameter,
         ano: year,
         mes: month,
         dia: day
       };
-      this.dataMeteo.getMeteodataById(this.mapboxservice.stationClickedProperties.codigo_cor, customizedDataRequestForChart).subscribe(
+      this.dataMeteo.getMeteodataById(this.mapboxservice.stationClickedProperties.codigo_cor, this.customizedDataRequestForChart).subscribe(
         (res) => {
           console.log(res);
           this.dataStream = res;
@@ -111,8 +115,30 @@ export class PopupBigComponent implements OnInit {
     }
   }
 
-  loadSecondStationforChart() {
-
+  loadSecondStationforChart(secondStationForm) {
+    if (this.mapboxservice.stationClicked === 'airstations') {
+      console.log(secondStationForm)
+      debugger
+      this.dataAir.getAirdataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
+        (res) => {
+          console.log(res);
+          this.dataStreamTwo = res;
+          debugger
+        }, (error) => {
+          console.log(error)
+        }
+      )
+    } else {
+      this.dataMeteo.getMeteodataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
+        (res) => {
+          console.log(res);
+          this.dataStreamTwo = res;
+          debugger
+        }, (error) => {
+          console.log(error)
+        }
+      )
+    }
   }
 
   close() {

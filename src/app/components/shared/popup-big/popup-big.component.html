@@ -13,9 +13,9 @@
   <app-chart [data]="dataStream"></app-chart>
   <div class="popup__downcontrol">
     <h1 class="popup__downcontrol-title">Add another station</h1>
-    <form class="popup__downontrol-box" (ngSubmit)="loadSecondStationforChart()">
-      <select class="popup__downcontrol-station">
-        <option value="select" selected>station</option>
+    <form class="popup__downontrol-box" #secondStationForm="ngForm" (ngSubmit)="loadSecondStationforChart(secondStationForm)">
+      <select class="popup__downcontrol-station" name="station" id="station">
+        <option value="select" selected>Station</option>
         <option *ngFor="let station of secondaryStationList" [value]= "station.properties.codigo_cor">{{station.properties.estacion}}</option>
       </select>
       <button type="submit" class="popup__downaction btn">Add</button>
