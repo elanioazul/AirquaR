@@ -91,7 +91,6 @@ export class PopupBigComponent implements OnInit {
       };
       this.dataAir.getAirdataById(this.mapboxservice.stationClickedProperties.codigo_cor, this.customizedDataRequestForChart).subscribe(
         (res) => {
-          console.log('res para el chart' + res);
           this.dataStream = res;
         }, (error) => {
           console.log('error para el chart' + error)
@@ -106,7 +105,6 @@ export class PopupBigComponent implements OnInit {
       };
       this.dataMeteo.getMeteodataById(this.mapboxservice.stationClickedProperties.codigo_cor, this.customizedDataRequestForChart).subscribe(
         (res) => {
-          console.log(res);
           this.dataStream = res;
         }, (error) => {
           console.log(error)
@@ -121,7 +119,8 @@ export class PopupBigComponent implements OnInit {
       debugger
       this.dataAir.getAirdataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
         (res) => {
-          console.log(res);
+          debugger
+          console.log('la res para la second station es :' + res);
           this.dataStreamTwo = res;
           debugger
         }, (error) => {
@@ -129,7 +128,7 @@ export class PopupBigComponent implements OnInit {
         }
       )
     } else {
-      this.dataMeteo.getMeteodataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
+      this.dataMeteo.getMeteodataById(secondStationForm.value.statio, this.customizedDataRequestForChart).subscribe(
         (res) => {
           console.log(res);
           this.dataStreamTwo = res;
