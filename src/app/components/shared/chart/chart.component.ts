@@ -49,6 +49,12 @@ export class ChartComponent implements OnChanges {
         }]
       },
       options: {
+        legend: {
+          display: true,
+          align: 'start',
+          position: 'top',
+
+        },
       }
     })
 
