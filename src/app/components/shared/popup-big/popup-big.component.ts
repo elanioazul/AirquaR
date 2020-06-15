@@ -73,7 +73,6 @@ export class PopupBigComponent implements OnInit {
   }
 
   loadDataforChartById(parameterForm) {
-    console.log(parameterForm)
     debugger
     let dateControl = (<HTMLInputElement>document.getElementById("date")).value;
     let parseadita = Date.parse(dateControl)
@@ -115,7 +114,7 @@ export class PopupBigComponent implements OnInit {
 
   loadSecondStationforChart(secondStationForm) {
     if (this.mapboxservice.stationClicked === 'airstations') {
-      console.log(secondStationForm)
+      debugger
       this.dataAir.getAirdataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
         (res) => {
           this.dataStreamTwo = res;
