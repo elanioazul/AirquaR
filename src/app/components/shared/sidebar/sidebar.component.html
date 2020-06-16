@@ -8,8 +8,13 @@
   <h1 class="sidebar__title">Geocatalog</h1>
   <div class="sidebar__body">
       <ul class="sidebar__sublist">
-        <input (click)="displayGeodata($event)" type="checkbox">
-        <span>Display all</span>
+        <label class="switch switch--sm">
+          <span class="switch__label">Display all</span>
+          <span class="switch__container">
+            <input (click)="displayGeodata($event)" type="checkbox" class="switch__input">
+            <span class="switch__slider"></span>
+          </span>
+        </label>
       </ul>
       <h2 class="sidebar__subtitle">Meteo & Air Quality</h2>
       <ul class="sidebar__sublist">

@@ -67,3 +67,76 @@
 }
 
 
+//--------------------
+//SWITCH
+//---------------
+.switch {
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+  & + & {
+    margin-left: 3rem;
+  }
+  //Label
+  &__label {
+    font-family: $font-primary;
+    font-size: var(--switch-label-size);
+  }
+
+  //Container
+  &__container {
+    position: relative;
+    display: inline-block;
+    width: calc(var(--switch-size)*2);
+    height: var(--switch-size);
+    margin-left:15px;
+  }
+  //Input
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
+  //Slider
+  &__slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right:0;
+    left: 0;
+    border-radius: var(--switch-radius);
+    background-color: var(--switch-color-off);
+      //Ball to animatealign-content
+  &::after {
+    content: "";
+    display: block;
+    width: var(--switch-size);
+    height: var(--switch-size);
+    border: 2px solid var(--switch-color-off);
+    background-color: var(--slider-color);
+    border-radius: var(--switch-radius);
+    transform: translate3d(0, 0, 0,);
+  }
+
+  }
+  &__slider::after {
+    transition: border-color 0.3s ease-in-out,
+                background 0.3s ease-in-out,
+                transform 0.25s ease-in-out;
+  }
+
+  //Checkbox checked
+  &__input:checked ~ .switch__slider {
+    background-color: var(--switch-color-on);
+    &::after {
+      border-color: var(--switch-color-on);
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+
+  //small version
+  &--sm {
+    --switch-size: 24px;
+    --switch-label-size: 1rem;
+
+  }
+}

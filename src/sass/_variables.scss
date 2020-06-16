@@ -1,3 +1,12 @@
+:root {
+  --switch-size: 34px;
+  --switch-radius: 30px;
+  --switch-color-off: #a1887f;
+  --switch-color-on: #ff5722;
+  --switch-label-size: 1.2rem;
+  --slider-color: #fff;
+  --slider-size: var(--switch-size);
+}
 //-------------
 //VARIABLES
 //--------------
