@@ -19,12 +19,22 @@
       <h2 class="sidebar__subtitle">Meteo & Air Quality</h2>
       <ul class="sidebar__sublist">
         <div class="sidebar__field">
-          <input id="airstationsCheck" (change)="airStationsToggle($event)" type="checkbox" name="switchExample" class="switch" checked="checked">
-          <label for="airstationsCheck"><span class="tag is-primary">Air Stations</span></label>
+          <label class="switch switch--sm">
+            <span class="switch__label">Air Stations</span>
+            <span class="switch__container">
+              <input id="airstationsCheck" (change)="airStationsToggle($event)" type="checkbox" class="switch__input" checked="checked">
+              <span class="switch__slider"></span>
+            </span>
+          </label>
         </div>
         <div class="sidebar__field">
-          <input id="meteostationsCheck" (change)="meteoStationsToggle($event)" type="checkbox" name="switchExample" class="switch" checked="checked">
-          <label for="meteostationsCheck"><span class="tag is-primary">Meteo Stations</span></label>
+          <label class="switch switch--sm">
+            <span class="switch__label">Meteo Stations</span>
+            <span class="switch__container">
+              <input id="meteostationsCheck" (change)="meteoStationsToggle($event)" type="checkbox" class="switch__input" checked="checked">
+              <span class="switch__slider"></span>
+            </span>
+          </label>
         </div>
       </ul>
   </div>
