@@ -73,6 +73,7 @@
 .switch {
   display:flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   & + & {
     margin-left: 3rem;

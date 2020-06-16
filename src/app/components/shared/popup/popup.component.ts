@@ -14,6 +14,16 @@ export class PopupComponent implements OnInit {
   //isMeteo = false;
   isAir = false;
 
+  public eresNull = function isNotNull(value) {
+    debugger
+    let reg = new RegExp("null")
+    if (value !== reg) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public stationsService: StationsDataService,
@@ -82,6 +92,13 @@ export class PopupComponent implements OnInit {
     }
     */
   }
+
+  isEmpty(value) {
+    debugger
+    return (value == "" || value == null)
+  }
+
+
 
   close() {
     this.dialogRef.close();

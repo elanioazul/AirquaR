@@ -10,14 +10,14 @@
       <p class="popup__coord-detail">Altitud: {{data.altitud}} msnm</p>
   </div>
     <ul class="popup__list" *ngIf="isAir; else elseBlock">
-      <li class="popup__list-li" data-foo="no2: ">{{data.no2}}</li>
-      <li class="popup__list-li" data-foo="so2: ">{{data.so2}}</li>
-      <li class="popup__list-li" data-foo="co: ">{{data.co}}</li>
-      <li class="popup__list-li" data-foo="pm10: ">{{data.pm10}}</li>
-      <li class="popup__list-li" data-foo="pm2,5: ">{{data.pm2_5}}</li>
-      <li class="popup__list-li" data-foo="o3: ">{{data.o3}}</li>
-      <li class="popup__list-li" data-foo="btx_ ">{{data.btx}}</li>
-      <li class="popup__list-li" data-foo="hc: ">{{data.hc}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.no2)" data-foo="no2: " >{{data.no2}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.so2)" data-foo="so2: ">{{data.so2}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.co)" data-foo="co: ">{{data.co}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.pm10)" data-foo="pm10: ">{{data.pm10}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.pm2_5)" data-foo="pm2,5: ">{{data.pm2_5}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.o3)" data-foo="o3: ">{{data.o3}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.btx)" data-foo="btx_ ">{{data.btx}}</li>
+      <li class="popup__list-li" *ngIf="eresNull(data.hc)" data-foo="hc: ">{{data.hc}}</li>
     </ul>
     <ng-template #elseBlock>
       <ul class="popup__list">

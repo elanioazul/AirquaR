@@ -130,6 +130,7 @@ export class MapboxGLService {
       let dialogRef = this.dialog.open(PopupComponent, {
         data: features[0].properties
       })
+      debugger
     })
   }
 
