@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Chart } from 'node_modules/chart.js';
+import { MapboxGLService } from '../../../services/mapbox-gl.service';
 
 @Component({
   selector: 'app-chart',
@@ -11,13 +12,18 @@ export class ChartComponent implements OnChanges {
   @Input('data') dataForChart: any;
   @Input('dataSecondStation') dataForChartSecond: any;
 
+
+  @Input() stationTwo: any;
+
   public xlabels: any[];
   public yvalues: any[];
 
   //la x como son las mismas horas utilizdo la xlabels variable
   public yvaluesSecondStation: any[];
 
-  constructor() { }
+  constructor(
+    private mapboxService: MapboxGLService
+  ) { }
 
   ngOnChanges(): void {
     if (Array.isArray(this.dataForChart) && this.dataForChart.length > 0) {
@@ -33,15 +39,15 @@ export class ChartComponent implements OnChanges {
       data: {
         labels: this.xlabels,
         datasets: [{
-          label: 'Parameter variation during the day',
+          label: this.mapboxService.stationClickedProperties.estacion,
           data: this.yvalues,
           fill: false,
           backgroundColor: 'rgba(0, 0, 0, 0.2)',
           borderColor: 'rgba(0, 0, 0, 1)',
           borderWidth: 1
         }, {
-          label: 'Second station data added',
-          data: this.yvaluesSecondStation,
+          label: this.stationTwo,
+          data:  this.yvaluesSecondStation,
           fill: false,
           backgroundColor: 'rgba(0, 0, 0, 0.2)',
           borderColor: 'red',
@@ -49,10 +55,21 @@ export class ChartComponent implements OnChanges {
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Parameter variation during the day',
+          position: 'top'
+        },
         legend: {
           display: true,
           align: 'start',
           position: 'top',
+          labels: {
+            boxWidth: 20,
+            fontSize: 10,
+          }
 
         },
       }

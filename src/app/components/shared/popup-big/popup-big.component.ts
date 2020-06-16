@@ -37,6 +37,10 @@ export class PopupBigComponent implements OnInit {
 
   public customizedDataRequestForChart: any;
 
+  public isAir = true;
+  public secondStation: any;
+
+
 
   ngOnInit(): void {
     this.propertiesStation = this.mapboxservice.stationClickedProperties;
@@ -81,7 +85,9 @@ export class PopupBigComponent implements OnInit {
     let month = newDate.getMonth() + 1;
     let day = newDate.getUTCDate();
 
+
     if (this.mapboxservice.stationClicked === 'airstations') {
+      this.isAir = this.isAir;
       this.customizedDataRequestForChart = {
         magnitud: parameterForm.value.parameter,
         ano: year,
@@ -96,6 +102,7 @@ export class PopupBigComponent implements OnInit {
         }
       )
     } else {
+      this.isAir = false;
       this.customizedDataRequestForChart = {
         magnitud: parameterForm.value.parameter,
         ano: year,
@@ -113,8 +120,15 @@ export class PopupBigComponent implements OnInit {
   }
 
   loadSecondStationforChart(secondStationForm) {
-    if (this.mapboxservice.stationClicked === 'airstations') {
-      debugger
+    if (this.isAir === true) {
+      let a = parseInt(secondStationForm.value.station);
+      this.stationsService.getAirStationById(a).subscribe(
+        (res) => {
+          this.secondStation = res[0].estacion;
+        }, (error) => {
+          console.log(error)
+        }
+      )
       this.dataAir.getAirdataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
         (res) => {
           this.dataStreamTwo = res;
@@ -123,9 +137,14 @@ export class PopupBigComponent implements OnInit {
         }
       )
     } else {
+      let a = parseInt(secondStationForm.value.station);
+      this.stationsService.getMeteoStationById (a).subscribe(
+        (res) => {
+          this.secondStation = res[0].estacion;
+        }
+      )
       this.dataMeteo.getMeteodataById(secondStationForm.value.station, this.customizedDataRequestForChart).subscribe(
         (res) => {
-          console.log(res);
           this.dataStreamTwo = res;
         }, (error) => {
           console.log(error)
