@@ -126,11 +126,9 @@ export class MapboxGLService {
       const features = map.queryRenderedFeatures(e.point, { layers: ['airstationsLayer', 'meteostationsLayer']});
       this.stationClicked = features[0].source;
       this.stationClickedProperties = features[0].properties;
-
       let dialogRef = this.dialog.open(PopupComponent, {
         data: features[0].properties
       })
-      debugger
     })
   }
 
