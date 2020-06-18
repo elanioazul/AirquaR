@@ -38,7 +38,6 @@ export class UsersService {
   }
 
   updateUser(user: User): Observable<User> {
-    debugger
     return this.http.put<User>(`${this.url}/${user.id}`, user);
   }
 

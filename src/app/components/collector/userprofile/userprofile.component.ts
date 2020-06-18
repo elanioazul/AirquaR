@@ -36,9 +36,7 @@ export class UserprofileComponent implements OnInit {
 
   ngOnInit(): void {
     this.error = null;
-    //debugger
     this.user = this.storage.get('user').data;
-    debugger
     this.formEditProfile = this.fb.group({
       username: [this.user?.username || '', [Validators.required, Validators.minLength(4)]],
       email: [this.user?.email || '', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -52,7 +50,6 @@ export class UserprofileComponent implements OnInit {
   }
 
   submit(form) {
-    debugger
     const updatedUser = Object.assign({}, this.user, {
       username: form.value.username,
       email: form.value.email,

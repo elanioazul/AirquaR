@@ -77,7 +77,6 @@ export class PopupBigComponent implements OnInit {
   }
 
   loadDataforChartById(parameterForm) {
-    debugger
     let dateControl = (<HTMLInputElement>document.getElementById("date")).value;
     let parseadita = Date.parse(dateControl)
     const newDate = new Date(parseadita)
