@@ -1,12 +1,14 @@
 # Airqua
-Airqua is my personal project for the Full Stack Web Development Bootcamp at Boream.
 
 Airqua is my personal project for the Full Stack Development Bootcamp at Boream.
+
 Responsive web mappong ap for the visualization of meteo&air Madrid open data.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
+
 To check out backend side of the project based in node-express-postgres visit the following link: https://github.com/elanioazul/Airqua-pg-back
 
-![] (geopois sample.gif)
+![] geopois_sample.gif
 
 # Tutorial
 https://geopois.com/blog/mapbox/mapbox-angular
