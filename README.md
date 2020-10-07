@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 To check out backend side of the project based in node-express-postgres visit the following link: https://github.com/elanioazul/Airqua-pg-back
 
-![] geopois_sample.gif
+![] ()
 
 # Tutorial
 https://geopois.com/blog/mapbox/mapbox-angular
