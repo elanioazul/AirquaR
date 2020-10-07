@@ -1,4 +1,5 @@
 # Airqua
+Airqua is my personal project for the Full Stack Web Development Bootcamp at Boream.
 
 Airqua is my personal project for the Full Stack Development Bootcamp at Boream.
 Responsive web mappong ap for the visualization of meteo&air Madrid open data.
